@@ -20,9 +20,9 @@ public:
 private slots:
     void on_iniciar_clicked();
 
-    void on_enviar_clicked();
+    //void on_enviar_clicked();
 
-    void on_quitar_clicked();
+    //void on_quitar_clicked();
 
 private:
     Ui::Widget *ui;

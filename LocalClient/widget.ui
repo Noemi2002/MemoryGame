@@ -6,77 +6,77 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>245</width>
-    <height>325</height>
+    <width>790</width>
+    <height>204</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
-  <widget class="QListWidget" name="listWidget">
+  <widget class="QPushButton" name="conectar">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>70</y>
-     <width>201</width>
-     <height>201</height>
+     <x>400</x>
+     <y>140</y>
+     <width>111</width>
+     <height>25</height>
     </rect>
    </property>
+   <property name="text">
+    <string>Iniciar Juego</string>
+   </property>
   </widget>
-  <widget class="QSpinBox" name="puerto">
+  <widget class="QLabel" name="instruccion1">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>290</y>
-     <width>91</width>
-     <height>26</height>
+     <x>30</x>
+     <y>30</y>
+     <width>811</width>
+     <height>21</height>
     </rect>
    </property>
-   <property name="maximum">
-    <number>999999</number>
+   <property name="text">
+    <string>¡Bienvenido a Memory game.</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="instrucciones2">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>290</y>
-     <width>67</width>
+     <x>30</x>
+     <y>50</y>
+     <width>811</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pueden jugar dos jugares a la vez, cada uno llevará su propio puntaje.</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="instrucciones3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>90</y>
+     <width>761</width>
      <height>17</height>
     </rect>
    </property>
    <property name="text">
-    <string>Puerto:</string>
+    <string>No es necesario que se registren con algún nombre, solamente que eligan entre ustedes el orden a jugar</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QLabel" name="instrucciones4">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>10</y>
-     <width>230</width>
-     <height>58</height>
+     <x>30</x>
+     <y>120</y>
+     <width>781</width>
+     <height>17</height>
     </rect>
    </property>
-   <layout class="QFormLayout" name="formLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Servidor:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="servidor"/>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="conectar">
-      <property name="text">
-       <string>Conectar</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <property name="text">
+    <string>Para iniciar el juego, darle click al siguiente botón:</string>
+   </property>
   </widget>
  </widget>
  <resources/>

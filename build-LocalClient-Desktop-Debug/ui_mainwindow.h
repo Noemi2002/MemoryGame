@@ -1,0 +1,460 @@
+/********************************************************************************
+** Form generated from reading UI file 'mainwindow.ui'
+**
+** Created by: Qt User Interface Compiler version 5.12.8
+**
+** WARNING! All changes made in this file will be lost when recompiling UI file!
+********************************************************************************/
+
+#ifndef UI_MAINWINDOW_H
+#define UI_MAINWINDOW_H
+
+#include <QtCore/QVariant>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QWidget>
+
+QT_BEGIN_NAMESPACE
+
+class Ui_MainWindow
+{
+public:
+    QWidget *centralwidget;
+    QLabel *titulo;
+    QLabel *PrimerJugador;
+    QLabel *SegundoJugador;
+    QFrame *frame;
+    QPushButton *carta02;
+    QPushButton *carta03;
+    QPushButton *carta04;
+    QPushButton *carta05;
+    QPushButton *carta06;
+    QPushButton *carta07;
+    QPushButton *carta17;
+    QPushButton *carta18;
+    QPushButton *carta19;
+    QPushButton *carta16;
+    QPushButton *carta21;
+    QPushButton *carta20;
+    QPushButton *carta10;
+    QPushButton *carta12;
+    QPushButton *carta13;
+    QPushButton *carta11;
+    QPushButton *carta09;
+    QPushButton *carta14;
+    QPushButton *carta25;
+    QPushButton *carta28;
+    QPushButton *carta27;
+    QPushButton *carta23;
+    QPushButton *carta26;
+    QPushButton *carta24;
+    QPushButton *carta31;
+    QPushButton *carta34;
+    QPushButton *carta33;
+    QPushButton *carta32;
+    QPushButton *carta35;
+    QPushButton *carta30;
+    QPushButton *carta16_2;
+    QPushButton *carta23_2;
+    QPushButton *carta02_2;
+    QPushButton *carta09_2;
+    QPushButton *carta30_2;
+    QPushButton *carta35_2;
+    QPushButton *carta21_2;
+    QPushButton *carta14_2;
+    QPushButton *carta07_2;
+    QPushButton *carta28_2;
+    QPushButton *carta35_3;
+    QPushButton *carta21_3;
+    QPushButton *carta14_3;
+    QPushButton *carta07_3;
+    QPushButton *carta28_3;
+    QPushButton *carta35_4;
+    QPushButton *carta21_4;
+    QPushButton *carta14_4;
+    QPushButton *carta07_4;
+    QPushButton *carta28_4;
+    QPushButton *carta35_5;
+    QPushButton *carta35_6;
+    QPushButton *carta34_2;
+    QPushButton *carta35_7;
+    QPushButton *carta35_8;
+    QPushButton *carta33_2;
+    QPushButton *carta30_3;
+    QPushButton *carta30_4;
+    QPushButton *carta32_2;
+    QPushButton *carta31_2;
+    QPushButton *carta35_9;
+    QPushButton *carta35_10;
+    QPushButton *carta34_3;
+    QPushButton *carta35_11;
+    QPushButton *carta35_12;
+    QPushButton *carta33_3;
+    QPushButton *carta30_5;
+    QPushButton *carta30_6;
+    QPushButton *carta32_3;
+    QPushButton *carta31_3;
+    QLabel *cronometro;
+    QMenuBar *menubar;
+    QStatusBar *statusbar;
+
+    void setupUi(QMainWindow *MainWindow)
+    {
+        if (MainWindow->objectName().isEmpty())
+            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
+        MainWindow->resize(1033, 770);
+        centralwidget = new QWidget(MainWindow);
+        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        titulo = new QLabel(centralwidget);
+        titulo->setObjectName(QString::fromUtf8("titulo"));
+        titulo->setGeometry(QRect(20, 10, 171, 31));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Ubuntu Condensed"));
+        font.setPointSize(20);
+        font.setBold(true);
+        font.setItalic(true);
+        font.setWeight(75);
+        titulo->setFont(font);
+        PrimerJugador = new QLabel(centralwidget);
+        PrimerJugador->setObjectName(QString::fromUtf8("PrimerJugador"));
+        PrimerJugador->setGeometry(QRect(10, 660, 67, 17));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Ubuntu Condensed"));
+        font1.setBold(true);
+        font1.setItalic(true);
+        font1.setWeight(75);
+        PrimerJugador->setFont(font1);
+        SegundoJugador = new QLabel(centralwidget);
+        SegundoJugador->setObjectName(QString::fromUtf8("SegundoJugador"));
+        SegundoJugador->setGeometry(QRect(10, 690, 67, 17));
+        SegundoJugador->setFont(font1);
+        frame = new QFrame(centralwidget);
+        frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setGeometry(QRect(10, 50, 1011, 591));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
+        carta02 = new QPushButton(frame);
+        carta02->setObjectName(QString::fromUtf8("carta02"));
+        carta02->setGeometry(QRect(10, 20, 91, 71));
+        carta03 = new QPushButton(frame);
+        carta03->setObjectName(QString::fromUtf8("carta03"));
+        carta03->setGeometry(QRect(210, 20, 91, 71));
+        carta04 = new QPushButton(frame);
+        carta04->setObjectName(QString::fromUtf8("carta04"));
+        carta04->setGeometry(QRect(310, 20, 91, 71));
+        carta05 = new QPushButton(frame);
+        carta05->setObjectName(QString::fromUtf8("carta05"));
+        carta05->setGeometry(QRect(410, 20, 91, 71));
+        carta06 = new QPushButton(frame);
+        carta06->setObjectName(QString::fromUtf8("carta06"));
+        carta06->setGeometry(QRect(510, 20, 91, 71));
+        carta07 = new QPushButton(frame);
+        carta07->setObjectName(QString::fromUtf8("carta07"));
+        carta07->setGeometry(QRect(610, 20, 91, 71));
+        carta17 = new QPushButton(frame);
+        carta17->setObjectName(QString::fromUtf8("carta17"));
+        carta17->setGeometry(QRect(210, 180, 91, 71));
+        carta18 = new QPushButton(frame);
+        carta18->setObjectName(QString::fromUtf8("carta18"));
+        carta18->setGeometry(QRect(310, 180, 91, 71));
+        carta19 = new QPushButton(frame);
+        carta19->setObjectName(QString::fromUtf8("carta19"));
+        carta19->setGeometry(QRect(410, 180, 91, 71));
+        carta16 = new QPushButton(frame);
+        carta16->setObjectName(QString::fromUtf8("carta16"));
+        carta16->setGeometry(QRect(10, 180, 91, 71));
+        carta21 = new QPushButton(frame);
+        carta21->setObjectName(QString::fromUtf8("carta21"));
+        carta21->setGeometry(QRect(610, 180, 91, 71));
+        carta20 = new QPushButton(frame);
+        carta20->setObjectName(QString::fromUtf8("carta20"));
+        carta20->setGeometry(QRect(510, 180, 91, 71));
+        carta10 = new QPushButton(frame);
+        carta10->setObjectName(QString::fromUtf8("carta10"));
+        carta10->setGeometry(QRect(210, 100, 91, 71));
+        carta12 = new QPushButton(frame);
+        carta12->setObjectName(QString::fromUtf8("carta12"));
+        carta12->setGeometry(QRect(410, 100, 91, 71));
+        carta13 = new QPushButton(frame);
+        carta13->setObjectName(QString::fromUtf8("carta13"));
+        carta13->setGeometry(QRect(510, 100, 91, 71));
+        carta11 = new QPushButton(frame);
+        carta11->setObjectName(QString::fromUtf8("carta11"));
+        carta11->setGeometry(QRect(310, 100, 91, 71));
+        carta09 = new QPushButton(frame);
+        carta09->setObjectName(QString::fromUtf8("carta09"));
+        carta09->setGeometry(QRect(10, 100, 91, 71));
+        carta14 = new QPushButton(frame);
+        carta14->setObjectName(QString::fromUtf8("carta14"));
+        carta14->setGeometry(QRect(610, 100, 91, 71));
+        carta25 = new QPushButton(frame);
+        carta25->setObjectName(QString::fromUtf8("carta25"));
+        carta25->setGeometry(QRect(310, 260, 91, 71));
+        carta28 = new QPushButton(frame);
+        carta28->setObjectName(QString::fromUtf8("carta28"));
+        carta28->setGeometry(QRect(610, 260, 91, 71));
+        carta27 = new QPushButton(frame);
+        carta27->setObjectName(QString::fromUtf8("carta27"));
+        carta27->setGeometry(QRect(510, 260, 91, 71));
+        carta23 = new QPushButton(frame);
+        carta23->setObjectName(QString::fromUtf8("carta23"));
+        carta23->setGeometry(QRect(10, 260, 91, 71));
+        carta26 = new QPushButton(frame);
+        carta26->setObjectName(QString::fromUtf8("carta26"));
+        carta26->setGeometry(QRect(410, 260, 91, 71));
+        carta24 = new QPushButton(frame);
+        carta24->setObjectName(QString::fromUtf8("carta24"));
+        carta24->setGeometry(QRect(210, 260, 91, 71));
+        carta31 = new QPushButton(frame);
+        carta31->setObjectName(QString::fromUtf8("carta31"));
+        carta31->setGeometry(QRect(210, 340, 91, 71));
+        carta34 = new QPushButton(frame);
+        carta34->setObjectName(QString::fromUtf8("carta34"));
+        carta34->setGeometry(QRect(510, 340, 91, 71));
+        carta33 = new QPushButton(frame);
+        carta33->setObjectName(QString::fromUtf8("carta33"));
+        carta33->setGeometry(QRect(410, 340, 91, 71));
+        carta32 = new QPushButton(frame);
+        carta32->setObjectName(QString::fromUtf8("carta32"));
+        carta32->setGeometry(QRect(310, 340, 91, 71));
+        carta35 = new QPushButton(frame);
+        carta35->setObjectName(QString::fromUtf8("carta35"));
+        carta35->setGeometry(QRect(610, 340, 91, 71));
+        carta30 = new QPushButton(frame);
+        carta30->setObjectName(QString::fromUtf8("carta30"));
+        carta30->setGeometry(QRect(10, 340, 91, 71));
+        carta16_2 = new QPushButton(frame);
+        carta16_2->setObjectName(QString::fromUtf8("carta16_2"));
+        carta16_2->setGeometry(QRect(110, 180, 91, 71));
+        carta23_2 = new QPushButton(frame);
+        carta23_2->setObjectName(QString::fromUtf8("carta23_2"));
+        carta23_2->setGeometry(QRect(110, 260, 91, 71));
+        carta02_2 = new QPushButton(frame);
+        carta02_2->setObjectName(QString::fromUtf8("carta02_2"));
+        carta02_2->setGeometry(QRect(110, 20, 91, 71));
+        carta09_2 = new QPushButton(frame);
+        carta09_2->setObjectName(QString::fromUtf8("carta09_2"));
+        carta09_2->setGeometry(QRect(110, 100, 91, 71));
+        carta30_2 = new QPushButton(frame);
+        carta30_2->setObjectName(QString::fromUtf8("carta30_2"));
+        carta30_2->setGeometry(QRect(110, 340, 91, 71));
+        carta35_2 = new QPushButton(frame);
+        carta35_2->setObjectName(QString::fromUtf8("carta35_2"));
+        carta35_2->setGeometry(QRect(710, 340, 91, 71));
+        carta21_2 = new QPushButton(frame);
+        carta21_2->setObjectName(QString::fromUtf8("carta21_2"));
+        carta21_2->setGeometry(QRect(710, 180, 91, 71));
+        carta14_2 = new QPushButton(frame);
+        carta14_2->setObjectName(QString::fromUtf8("carta14_2"));
+        carta14_2->setGeometry(QRect(710, 100, 91, 71));
+        carta07_2 = new QPushButton(frame);
+        carta07_2->setObjectName(QString::fromUtf8("carta07_2"));
+        carta07_2->setGeometry(QRect(710, 20, 91, 71));
+        carta28_2 = new QPushButton(frame);
+        carta28_2->setObjectName(QString::fromUtf8("carta28_2"));
+        carta28_2->setGeometry(QRect(710, 260, 91, 71));
+        carta35_3 = new QPushButton(frame);
+        carta35_3->setObjectName(QString::fromUtf8("carta35_3"));
+        carta35_3->setGeometry(QRect(810, 340, 91, 71));
+        carta21_3 = new QPushButton(frame);
+        carta21_3->setObjectName(QString::fromUtf8("carta21_3"));
+        carta21_3->setGeometry(QRect(810, 180, 91, 71));
+        carta14_3 = new QPushButton(frame);
+        carta14_3->setObjectName(QString::fromUtf8("carta14_3"));
+        carta14_3->setGeometry(QRect(810, 100, 91, 71));
+        carta07_3 = new QPushButton(frame);
+        carta07_3->setObjectName(QString::fromUtf8("carta07_3"));
+        carta07_3->setGeometry(QRect(810, 20, 91, 71));
+        carta28_3 = new QPushButton(frame);
+        carta28_3->setObjectName(QString::fromUtf8("carta28_3"));
+        carta28_3->setGeometry(QRect(810, 260, 91, 71));
+        carta35_4 = new QPushButton(frame);
+        carta35_4->setObjectName(QString::fromUtf8("carta35_4"));
+        carta35_4->setGeometry(QRect(910, 340, 91, 71));
+        carta21_4 = new QPushButton(frame);
+        carta21_4->setObjectName(QString::fromUtf8("carta21_4"));
+        carta21_4->setGeometry(QRect(910, 180, 91, 71));
+        carta14_4 = new QPushButton(frame);
+        carta14_4->setObjectName(QString::fromUtf8("carta14_4"));
+        carta14_4->setGeometry(QRect(910, 100, 91, 71));
+        carta07_4 = new QPushButton(frame);
+        carta07_4->setObjectName(QString::fromUtf8("carta07_4"));
+        carta07_4->setGeometry(QRect(910, 20, 91, 71));
+        carta28_4 = new QPushButton(frame);
+        carta28_4->setObjectName(QString::fromUtf8("carta28_4"));
+        carta28_4->setGeometry(QRect(910, 260, 91, 71));
+        carta35_5 = new QPushButton(frame);
+        carta35_5->setObjectName(QString::fromUtf8("carta35_5"));
+        carta35_5->setGeometry(QRect(810, 420, 91, 71));
+        carta35_6 = new QPushButton(frame);
+        carta35_6->setObjectName(QString::fromUtf8("carta35_6"));
+        carta35_6->setGeometry(QRect(910, 420, 91, 71));
+        carta34_2 = new QPushButton(frame);
+        carta34_2->setObjectName(QString::fromUtf8("carta34_2"));
+        carta34_2->setGeometry(QRect(510, 420, 91, 71));
+        carta35_7 = new QPushButton(frame);
+        carta35_7->setObjectName(QString::fromUtf8("carta35_7"));
+        carta35_7->setGeometry(QRect(610, 420, 91, 71));
+        carta35_8 = new QPushButton(frame);
+        carta35_8->setObjectName(QString::fromUtf8("carta35_8"));
+        carta35_8->setGeometry(QRect(710, 420, 91, 71));
+        carta33_2 = new QPushButton(frame);
+        carta33_2->setObjectName(QString::fromUtf8("carta33_2"));
+        carta33_2->setGeometry(QRect(410, 420, 91, 71));
+        carta30_3 = new QPushButton(frame);
+        carta30_3->setObjectName(QString::fromUtf8("carta30_3"));
+        carta30_3->setGeometry(QRect(10, 420, 91, 71));
+        carta30_4 = new QPushButton(frame);
+        carta30_4->setObjectName(QString::fromUtf8("carta30_4"));
+        carta30_4->setGeometry(QRect(110, 420, 91, 71));
+        carta32_2 = new QPushButton(frame);
+        carta32_2->setObjectName(QString::fromUtf8("carta32_2"));
+        carta32_2->setGeometry(QRect(310, 420, 91, 71));
+        carta31_2 = new QPushButton(frame);
+        carta31_2->setObjectName(QString::fromUtf8("carta31_2"));
+        carta31_2->setGeometry(QRect(210, 420, 91, 71));
+        carta35_9 = new QPushButton(frame);
+        carta35_9->setObjectName(QString::fromUtf8("carta35_9"));
+        carta35_9->setGeometry(QRect(810, 500, 91, 71));
+        carta35_10 = new QPushButton(frame);
+        carta35_10->setObjectName(QString::fromUtf8("carta35_10"));
+        carta35_10->setGeometry(QRect(910, 500, 91, 71));
+        carta34_3 = new QPushButton(frame);
+        carta34_3->setObjectName(QString::fromUtf8("carta34_3"));
+        carta34_3->setGeometry(QRect(510, 500, 91, 71));
+        carta35_11 = new QPushButton(frame);
+        carta35_11->setObjectName(QString::fromUtf8("carta35_11"));
+        carta35_11->setGeometry(QRect(610, 500, 91, 71));
+        carta35_12 = new QPushButton(frame);
+        carta35_12->setObjectName(QString::fromUtf8("carta35_12"));
+        carta35_12->setGeometry(QRect(710, 500, 91, 71));
+        carta33_3 = new QPushButton(frame);
+        carta33_3->setObjectName(QString::fromUtf8("carta33_3"));
+        carta33_3->setGeometry(QRect(410, 500, 91, 71));
+        carta30_5 = new QPushButton(frame);
+        carta30_5->setObjectName(QString::fromUtf8("carta30_5"));
+        carta30_5->setGeometry(QRect(10, 500, 91, 71));
+        carta30_6 = new QPushButton(frame);
+        carta30_6->setObjectName(QString::fromUtf8("carta30_6"));
+        carta30_6->setGeometry(QRect(110, 500, 91, 71));
+        carta32_3 = new QPushButton(frame);
+        carta32_3->setObjectName(QString::fromUtf8("carta32_3"));
+        carta32_3->setGeometry(QRect(310, 500, 91, 71));
+        carta31_3 = new QPushButton(frame);
+        carta31_3->setObjectName(QString::fromUtf8("carta31_3"));
+        carta31_3->setGeometry(QRect(210, 500, 91, 71));
+        cronometro = new QLabel(centralwidget);
+        cronometro->setObjectName(QString::fromUtf8("cronometro"));
+        cronometro->setGeometry(QRect(890, 10, 121, 20));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Ubuntu Condensed"));
+        font2.setBold(true);
+        font2.setWeight(75);
+        cronometro->setFont(font2);
+        MainWindow->setCentralWidget(centralwidget);
+        menubar = new QMenuBar(MainWindow);
+        menubar->setObjectName(QString::fromUtf8("menubar"));
+        menubar->setGeometry(QRect(0, 0, 1033, 22));
+        MainWindow->setMenuBar(menubar);
+        statusbar = new QStatusBar(MainWindow);
+        statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        MainWindow->setStatusBar(statusbar);
+
+        retranslateUi(MainWindow);
+
+        QMetaObject::connectSlotsByName(MainWindow);
+    } // setupUi
+
+    void retranslateUi(QMainWindow *MainWindow)
+    {
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        titulo->setText(QApplication::translate("MainWindow", "Memory Game", nullptr));
+        PrimerJugador->setText(QApplication::translate("MainWindow", "Player 1", nullptr));
+        SegundoJugador->setText(QApplication::translate("MainWindow", "Player 2", nullptr));
+        carta02->setText(QString());
+        carta03->setText(QString());
+        carta04->setText(QString());
+        carta05->setText(QString());
+        carta06->setText(QString());
+        carta07->setText(QString());
+        carta17->setText(QString());
+        carta18->setText(QString());
+        carta19->setText(QString());
+        carta16->setText(QString());
+        carta21->setText(QString());
+        carta20->setText(QString());
+        carta10->setText(QString());
+        carta12->setText(QString());
+        carta13->setText(QString());
+        carta11->setText(QString());
+        carta09->setText(QString());
+        carta14->setText(QString());
+        carta25->setText(QString());
+        carta28->setText(QString());
+        carta27->setText(QString());
+        carta23->setText(QString());
+        carta26->setText(QString());
+        carta24->setText(QString());
+        carta31->setText(QString());
+        carta34->setText(QString());
+        carta33->setText(QString());
+        carta32->setText(QString());
+        carta35->setText(QString());
+        carta30->setText(QString());
+        carta16_2->setText(QString());
+        carta23_2->setText(QString());
+        carta02_2->setText(QString());
+        carta09_2->setText(QString());
+        carta30_2->setText(QString());
+        carta35_2->setText(QString());
+        carta21_2->setText(QString());
+        carta14_2->setText(QString());
+        carta07_2->setText(QString());
+        carta28_2->setText(QString());
+        carta35_3->setText(QString());
+        carta21_3->setText(QString());
+        carta14_3->setText(QString());
+        carta07_3->setText(QString());
+        carta28_3->setText(QString());
+        carta35_4->setText(QString());
+        carta21_4->setText(QString());
+        carta14_4->setText(QString());
+        carta07_4->setText(QString());
+        carta28_4->setText(QString());
+        carta35_5->setText(QString());
+        carta35_6->setText(QString());
+        carta34_2->setText(QString());
+        carta35_7->setText(QString());
+        carta35_8->setText(QString());
+        carta33_2->setText(QString());
+        carta30_3->setText(QString());
+        carta30_4->setText(QString());
+        carta32_2->setText(QString());
+        carta31_2->setText(QString());
+        carta35_9->setText(QString());
+        carta35_10->setText(QString());
+        carta34_3->setText(QString());
+        carta35_11->setText(QString());
+        carta35_12->setText(QString());
+        carta33_3->setText(QString());
+        carta30_5->setText(QString());
+        carta30_6->setText(QString());
+        carta32_3->setText(QString());
+        carta31_3->setText(QString());
+        cronometro->setText(QApplication::translate("MainWindow", "Cron\303\263metro", nullptr));
+    } // retranslateUi
+
+};
+
+namespace Ui {
+    class MainWindow: public Ui_MainWindow {};
+} // namespace Ui
+
+QT_END_NAMESPACE
+
+#endif // UI_MAINWINDOW_H

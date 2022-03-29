@@ -53,9 +53,13 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../LocalClient/main.cpp \
-		../LocalClient/widget.cpp moc_widget.cpp
+		../LocalClient/mainwindow.cpp \
+		../LocalClient/widget.cpp moc_mainwindow.cpp \
+		moc_widget.cpp
 OBJECTS       = main.o \
+		mainwindow.o \
 		widget.o \
+		moc_mainwindow.o \
 		moc_widget.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -133,7 +137,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../LocalClient/LocalClient.pro ../LocalClient/widget.h ../LocalClient/main.cpp \
+		../LocalClient/LocalClient.pro ../LocalClient/mainwindow.h \
+		../LocalClient/widget.h ../LocalClient/main.cpp \
+		../LocalClient/mainwindow.cpp \
 		../LocalClient/widget.cpp
 QMAKE_TARGET  = LocalClient
 DESTDIR       = 
@@ -143,7 +149,7 @@ TARGET        = LocalClient
 first: all
 ####### Build rules
 
-LocalClient: ui_widget.h $(OBJECTS)  
+LocalClient: ui_mainwindow.h ui_widget.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../LocalClient/LocalClient.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -316,9 +322,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../LocalClient/widget.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../LocalClient/main.cpp ../LocalClient/widget.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../LocalClient/widget.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../LocalClient/mainwindow.h ../LocalClient/widget.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../LocalClient/main.cpp ../LocalClient/mainwindow.cpp ../LocalClient/widget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../LocalClient/mainwindow.ui ../LocalClient/widget.ui $(DISTDIR)/
 	$(COPY_FILE) --parents LocalClient_es_CR.ts $(DISTDIR)/
 
 
@@ -351,10 +357,16 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	x86_64-linux-gnu-g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_widget.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_widget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_widget.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_widget.cpp
+moc_mainwindow.cpp: ../LocalClient/mainwindow.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/mimi/Documentos/Qt/MemoryGame/build-LocalClient-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mimi/Documentos/Qt/MemoryGame/LocalClient -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../LocalClient/mainwindow.h -o moc_mainwindow.cpp
+
 moc_widget.cpp: ../LocalClient/widget.h \
+		../LocalClient/mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/mimi/Documentos/Qt/MemoryGame/build-LocalClient-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mimi/Documentos/Qt/MemoryGame/LocalClient -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../LocalClient/widget.h -o moc_widget.cpp
@@ -363,9 +375,13 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_widget.h
+compiler_uic_make_all: ui_mainwindow.h ui_widget.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_widget.h
+	-$(DEL_FILE) ui_mainwindow.h ui_widget.h
+ui_mainwindow.h: ../LocalClient/mainwindow.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic ../LocalClient/mainwindow.ui -o ui_mainwindow.h
+
 ui_widget.h: ../LocalClient/widget.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic ../LocalClient/widget.ui -o ui_widget.h
@@ -380,12 +396,21 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: ../LocalClient/main.cpp ../LocalClient/widget.h
+main.o: ../LocalClient/main.cpp ../LocalClient/widget.h \
+		../LocalClient/mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../LocalClient/main.cpp
 
+mainwindow.o: ../LocalClient/mainwindow.cpp ../LocalClient/mainwindow.h \
+		ui_mainwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../LocalClient/mainwindow.cpp
+
 widget.o: ../LocalClient/widget.cpp ../LocalClient/widget.h \
+		../LocalClient/mainwindow.h \
 		ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o ../LocalClient/widget.cpp
+
+moc_mainwindow.o: moc_mainwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 moc_widget.o: moc_widget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_widget.o moc_widget.cpp

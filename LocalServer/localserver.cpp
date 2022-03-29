@@ -12,11 +12,11 @@ LocalServer::LocalServer(QObject *parent) : QTcpServer(parent)
 }
 
 
-void LocalServer::envia(const QString &msj){
+/*void LocalServer::envia(const QString &msj){
 
     if (mSocket){
     QTextStream T(mSocket);
     T << msj;
     mSocket->flush(); //limpiar el socket
     }
-}
+}*/

@@ -2,6 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include "mainwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -17,15 +18,13 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
+
 private slots:
     void on_conectar_clicked();
-
-    void on_quitarClient_clicked();
-
-    void on_quitarC_clicked();
 
 private:
     Ui::Widget *ui;
     QTcpSocket *mSocket;
+    MainWindow *g;
 };
 #endif // WIDGET_H

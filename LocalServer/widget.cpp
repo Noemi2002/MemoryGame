@@ -19,14 +19,14 @@ Widget::~Widget()
 
 void Widget::on_iniciar_clicked()
 {
-   if (!mLocalServer->listen(QHostAddress::Any, ui->puerto->value())){
+   if (!mLocalServer->listen(QHostAddress::Any, 8080)){
         QMessageBox::critical(this, "Error", mLocalServer->errorString());
    }else{
    QMessageBox::information(this, "Servidor", "Iniciado...");
    }
 }
 
-void Widget::on_enviar_clicked()
+/*void Widget::on_enviar_clicked()
 {
 
     mLocalServer->envia(ui->msj->text());
@@ -35,5 +35,5 @@ void Widget::on_enviar_clicked()
 void Widget::on_quitar_clicked()
 {
     close();
-}
+}*/
 
