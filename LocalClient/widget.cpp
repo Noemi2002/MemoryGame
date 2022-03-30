@@ -24,9 +24,12 @@ Widget::~Widget()
 
 void Widget::on_conectar_clicked()
 {
-    mSocket->connectToHost("localhost", 8080);
+    mSocket->connectToHost("LocalHost", 8080);
     g = new MainWindow(this);
     g->show();
     this->hide();
+    g->duranteJuego=false;
+    g->CantidadParejas=35;
+    //g->cronometro.setText(time.toString);
 }
 

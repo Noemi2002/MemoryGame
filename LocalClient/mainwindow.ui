@@ -54,7 +54,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Player 1</string>
+     <string>Player 1:</string>
     </property>
    </widget>
    <widget class="QLabel" name="SegundoJugador">
@@ -75,7 +75,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Player 2</string>
+     <string>Player 2:</string>
     </property>
    </widget>
    <widget class="QFrame" name="frame">
@@ -1022,6 +1022,32 @@
     </property>
     <property name="text">
      <string>Cronómetro</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Puntaje1">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>660</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Puntaje2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>700</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
     </property>
    </widget>
   </widget>

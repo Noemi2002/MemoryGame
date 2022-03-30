@@ -54,11 +54,13 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../LocalServer/localserver.cpp \
 		../LocalServer/main.cpp \
-		../LocalServer/widget.cpp moc_localserver.cpp \
+		../LocalServer/widget.cpp qrc_img.cpp \
+		moc_localserver.cpp \
 		moc_widget.cpp
 OBJECTS       = localserver.o \
 		main.o \
 		widget.o \
+		qrc_img.o \
 		moc_localserver.o \
 		moc_widget.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -228,7 +230,8 @@ Makefile: ../LocalServer/LocalServer.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/l
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../LocalServer/LocalServer.pro
+		../LocalServer/LocalServer.pro \
+		../LocalServer/img.qrc
 	$(QMAKE) -o Makefile ../LocalServer/LocalServer.pro -qtconf /usr/lib/x86_64-linux-gnu/qt5/qt.conf -early QMAKE_CC=x86_64-linux-gnu-gcc QMAKE_CXX=x86_64-linux-gnu-g++ QMAKE_LINK=x86_64-linux-gnu-g++ QMAKE_STRIP=x86_64-linux-gnu-strip QMAKE_QMAKE=/usr/bin/x86_64-linux-gnu-qmake PKG_CONFIG=x86_64-linux-gnu-pkg-config -before -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf:
@@ -307,6 +310,7 @@ Makefile: ../LocalServer/LocalServer.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/l
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 ../LocalServer/LocalServer.pro:
+../LocalServer/img.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../LocalServer/LocalServer.pro -qtconf /usr/lib/x86_64-linux-gnu/qt5/qt.conf -early QMAKE_CC=x86_64-linux-gnu-gcc QMAKE_CXX=x86_64-linux-gnu-g++ QMAKE_LINK=x86_64-linux-gnu-g++ QMAKE_STRIP=x86_64-linux-gnu-strip QMAKE_QMAKE=/usr/bin/x86_64-linux-gnu-qmake PKG_CONFIG=x86_64-linux-gnu-pkg-config -before -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
@@ -321,6 +325,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../LocalServer/img.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../LocalServer/localserver.h ../LocalServer/widget.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../LocalServer/localserver.cpp ../LocalServer/main.cpp ../LocalServer/widget.cpp $(DISTDIR)/
@@ -349,8 +354,48 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_img.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_img.cpp
+qrc_img.cpp: ../LocalServer/img.qrc \
+		/usr/lib/qt5/bin/rcc \
+		../30.png \
+		../31.png \
+		../32.png \
+		../33.png \
+		../34.png \
+		../35.png \
+		../20.png \
+		../21.png \
+		../22.png \
+		../23.png \
+		../24.png \
+		../25.png \
+		../1.png \
+		../26.png \
+		../10.png \
+		../2.png \
+		../27.png \
+		../11.png \
+		../3.png \
+		../28.png \
+		../12.png \
+		../4.png \
+		../29.png \
+		../13.png \
+		../5.png \
+		../14.png \
+		../6.png \
+		../15.png \
+		../7.png \
+		../16.png \
+		../8.png \
+		../17.png \
+		../9.png \
+		../18.png \
+		../19.png
+	/usr/lib/qt5/bin/rcc -name img ../LocalServer/img.qrc -o qrc_img.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -387,7 +432,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -401,6 +446,9 @@ widget.o: ../LocalServer/widget.cpp ../LocalServer/widget.h \
 		ui_widget.h \
 		../LocalServer/localserver.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o ../LocalServer/widget.cpp
+
+qrc_img.o: qrc_img.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_img.o qrc_img.cpp
 
 moc_localserver.o: moc_localserver.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_localserver.o moc_localserver.cpp

@@ -19,10 +19,12 @@ Widget::~Widget()
 
 void Widget::on_iniciar_clicked()
 {
-   if (!mLocalServer->listen(QHostAddress::Any, 8080)){
+   if (!mLocalServer->listen(QHostAddress::LocalHost, 8080)){
         QMessageBox::critical(this, "Error", mLocalServer->errorString());
    }else{
    QMessageBox::information(this, "Servidor", "Iniciado...");
+   mLocalServer->mezclarNombresVector();
+   mLocalServer->repartirImagenes();
    }
 }
 
