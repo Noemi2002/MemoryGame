@@ -1,4 +1,4 @@
-#include "localserver.h"
+/*#include "localserver.h"
 #include <QTcpSocket>
 #include <QTextStream>
 
@@ -10,9 +10,10 @@ LocalServer::LocalServer(QObject *parent) : QTcpServer(parent)
     connect(this, &LocalServer::newConnection, [&](){
         mSocket = nextPendingConnection();
     });
+
 }
 
-void LocalServer::mezclarNombresVector(){
+/*void LocalServer::mezclarNombresVector(){
     unsigned semilla = std::chrono::system_clock::now().time_since_epoch().count();
     shuffle(NombreTarjetas.begin(), NombreTarjetas.end(), std::default_random_engine(semilla)); //default_random_engine(semilla) es el generador de los números aleatorios
 }
@@ -27,7 +28,7 @@ void LocalServer::repartirImagenes(){
         cabeza++;
 
     }
-}
+}*/
 
 /*void LocalServer::envia(const QString &msj){
 

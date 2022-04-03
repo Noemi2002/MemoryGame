@@ -55,13 +55,11 @@ OBJECTS_DIR   = ./
 SOURCES       = ../LocalServer/localserver.cpp \
 		../LocalServer/main.cpp \
 		../LocalServer/widget.cpp qrc_img.cpp \
-		moc_localserver.cpp \
 		moc_widget.cpp
 OBJECTS       = localserver.o \
 		main.o \
 		widget.o \
 		qrc_img.o \
-		moc_localserver.o \
 		moc_widget.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -402,14 +400,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	x86_64-linux-gnu-g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_localserver.cpp moc_widget.cpp
+compiler_moc_header_make_all: moc_widget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_localserver.cpp moc_widget.cpp
-moc_localserver.cpp: ../LocalServer/localserver.h \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/mimi/Documentos/Qt/MemoryGame/build-LocalServer-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mimi/Documentos/Qt/MemoryGame/LocalServer -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../LocalServer/localserver.h -o moc_localserver.cpp
-
+	-$(DEL_FILE) moc_widget.cpp
 moc_widget.cpp: ../LocalServer/widget.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -436,22 +429,18 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-localserver.o: ../LocalServer/localserver.cpp ../LocalServer/localserver.h
+localserver.o: ../LocalServer/localserver.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o localserver.o ../LocalServer/localserver.cpp
 
 main.o: ../LocalServer/main.cpp ../LocalServer/widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../LocalServer/main.cpp
 
 widget.o: ../LocalServer/widget.cpp ../LocalServer/widget.h \
-		ui_widget.h \
-		../LocalServer/localserver.h
+		ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o ../LocalServer/widget.cpp
 
 qrc_img.o: qrc_img.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_img.o qrc_img.cpp
-
-moc_localserver.o: moc_localserver.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_localserver.o moc_localserver.cpp
 
 moc_widget.o: moc_widget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_widget.o moc_widget.cpp

@@ -1,18 +1,38 @@
-#include "mainwindow.h"
+/*#include "mainwindow.h"
 #include "ui_mainwindow.h"
+//#include "widget.h"
+#include <QTcpSocket>
+#include <QTextStream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(PtrTiempo, SIGNAL(timeout()), this, SLOT(ActualizarJuego()));
-    time.setHMS(0,0,0);
+    PtrJuego = new QTcpSocket(this);
+    //conectar a servidor en esta linea.
+    PtrJuego->connectToHost("LocalHost", 8080);
+
+    //connect(PtrTiempo, SIGNAL(timeout()), this, SLOT(ActualizarJuego()));
+    //connect(ui->carta1, SIGNAL(clicked()), this, SLOT(enviarNombreCarta()));
+
+    /*time.setHMS(0,0,0);
     ui->cronometro->setText(time.toString("m:ss"));
     PtrTiempo->start(1000);
 }
 
-void MainWindow::ResultadoJuego(){
+void MainWindow::enviarNombreCarta(){
+        enviarDatos("Nombre de la carta");
+
+}
+
+void MainWindow::enviarDatos(const QString msj){
+        QTextStream T(PtrJuego);
+        T << msj;
+        PtrJuego->flush();
+}
+
+/*void MainWindow::ResultadoJuego(){
     ganador.setWindowTitle("¡Se acabó el juego!");
     ganador.setIcon(QMessageBox::Information);
     ganador.button(QMessageBox::Yes);
@@ -41,8 +61,21 @@ void MainWindow::ActualizarJuego(){
 
 }
 
+void MainWindow::enviarNombreCarta(){
+    QTextStream T(PtrJuego);
+    T << "Nombre de carta";
+    PtrJuego->flush();
+}
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_carta1_clicked()
+{
+    if(PtrJuego){
+        enviarDatos("Nombre de la carta");
+    }
+}*/

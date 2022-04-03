@@ -11,8 +11,8 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -21,39 +21,24 @@ QT_BEGIN_NAMESPACE
 class Ui_Widget
 {
 public:
-    QGridLayout *gridLayout_3;
-    QGridLayout *gridLayout_2;
-    QGridLayout *gridLayout;
-    QLabel *Servidor_Guia;
-    QPushButton *iniciar;
+    QLineEdit *mensaje;
+    QPushButton *Enviar;
+    QPlainTextEdit *texto;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QString::fromUtf8("Widget"));
-        Widget->resize(308, 197);
-        gridLayout_3 = new QGridLayout(Widget);
-        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        gridLayout_2 = new QGridLayout();
-        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        gridLayout = new QGridLayout();
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        Servidor_Guia = new QLabel(Widget);
-        Servidor_Guia->setObjectName(QString::fromUtf8("Servidor_Guia"));
-
-        gridLayout->addWidget(Servidor_Guia, 2, 0, 1, 1);
-
-        iniciar = new QPushButton(Widget);
-        iniciar->setObjectName(QString::fromUtf8("iniciar"));
-
-        gridLayout->addWidget(iniciar, 1, 0, 1, 1);
-
-
-        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
-
-
-        gridLayout_3->addLayout(gridLayout_2, 0, 0, 1, 1);
-
+        Widget->resize(383, 257);
+        mensaje = new QLineEdit(Widget);
+        mensaje->setObjectName(QString::fromUtf8("mensaje"));
+        mensaje->setGeometry(QRect(10, 10, 221, 25));
+        Enviar = new QPushButton(Widget);
+        Enviar->setObjectName(QString::fromUtf8("Enviar"));
+        Enviar->setGeometry(QRect(260, 10, 89, 25));
+        texto = new QPlainTextEdit(Widget);
+        texto->setObjectName(QString::fromUtf8("texto"));
+        texto->setGeometry(QRect(10, 50, 361, 191));
 
         retranslateUi(Widget);
 
@@ -63,8 +48,7 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QApplication::translate("Widget", "Widget", nullptr));
-        Servidor_Guia->setText(QApplication::translate("Widget", "Interfaz del servidor", nullptr));
-        iniciar->setText(QApplication::translate("Widget", "Iniciar Servidor", nullptr));
+        Enviar->setText(QApplication::translate("Widget", "Enviar", nullptr));
     } // retranslateUi
 
 };

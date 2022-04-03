@@ -1,14 +1,17 @@
-#ifndef MAINWINDOW_H
+/*#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
 #include <QTime>
 #include <QTimer>
 #include <QMessageBox>
+//#include "widget.h"
 
 namespace Ui {
 class MainWindow;
 }
+
+class QTcpSocket;
 
 class MainWindow : public QMainWindow
 {
@@ -24,12 +27,17 @@ public:
     bool duranteJuego;
 
 private slots:
-    void ActualizarJuego();
-    void ActualizarCronometro();
-    void ResultadoJuego();
+    //void ActualizarJuego();
+    //void ActualizarCronometro();
+    //void ResultadoJuego();
+    void enviarNombreCarta();
+    void enviarDatos(const QString msj);
+
+    void on_carta1_clicked();
 
 private:
     Ui::MainWindow *ui;
+    QTcpSocket *PtrJuego;
 };
 
-#endif // MAINWINDOW_H
+#endif // MAINWINDOW_H*/
