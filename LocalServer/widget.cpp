@@ -13,7 +13,7 @@ Widget::Widget(QWidget *parent)
     connect(PtrServer, SIGNAL(newConnection()), this, SLOT(nuevaConexion()));
 
     mezclarNombresCartas(NombreCartas);
-    repartirImagenes(NombreCartas, reparto);
+    //repartirImagenes(NombreCartas, reparto);
 
 }
 

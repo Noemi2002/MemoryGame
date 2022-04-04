@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <QTcpSocket>
 #include <QString>
+#include <QTimer>
+#include <QTime>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -17,11 +20,19 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
+    QTimer *PtrTiempo=new QTimer();
+    QTime tiempo;
+    int parejasRestantes = 35;
+
 private slots:
     void leer();
 
     void on_Enviar_clicked();
     void enviarNombreCarta(QString carta);
+    void iniciarJuego();
+    void cronometro();
+    void finalizarJuego();
+
 
 
 

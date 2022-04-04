@@ -3,6 +3,7 @@
 #include <QMessageBox>
 
 
+
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -15,12 +16,30 @@ Widget::Widget(QWidget *parent)
         QMessageBox::information(this, "Excelente", "Se conectó al servidor correctamente");
     }else{
         QMessageBox::critical(this, "ERROR", "No se pudo conectar al servidor");
+
     }
     connect(PtrSocketC, SIGNAL(readyRead()), this, SLOT(leer()));
+    connect(PtrTiempo, SIGNAL(timeout()), this, SLOT(cronometro()));
+    iniciarJuego();
+
 
 
 }
 
+void Widget::iniciarJuego(){
+
+    //connect(ui->carta70_2, SIGNAL(clicked()), this, SLOT(intento()));
+    tiempo.setHMS(0,0,0);
+    ui->cronometro->setText(tiempo.toString("m:ss"));
+    PtrTiempo->start(1000);
+
+}
+
+void Widget::cronometro(){
+        tiempo=tiempo.addSecs(1);
+        ui->cronometro->setText(tiempo.toString("m:ss"));
+
+}
 
 
 void Widget::leer(){
@@ -34,6 +53,20 @@ void Widget::leer(){
 Widget::~Widget()
 {
     delete ui;
+}
+
+void Widget::finalizarJuego(){
+
+
+    if(parejasRestantes == 0){
+        PtrTiempo->stop();
+        QMessageBox::information(this, "Se acabó el juego", "¡Felicidades!, has ganado");
+    }else{
+        if (tiempo.toString()=="00:15:00" && parejasRestantes != 0){
+            PtrTiempo->stop();
+            QMessageBox::information(this, "Se acabó el juego", "¡Lo siento!, has perdido");
+        }
+    }
 }
 
 void Widget::on_Enviar_clicked(){
