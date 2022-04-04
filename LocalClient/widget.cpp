@@ -18,20 +18,9 @@ Widget::Widget(QWidget *parent)
     }
     connect(PtrSocketC, SIGNAL(readyRead()), this, SLOT(leer()));
 
-    //QPushButton* buttonSender = qobject_cast<QPushButton*>(sender()); // retrieve the button you have clicked
-    //QString buttonText = buttonSender->text(); // retrive the text from the button clicked
-
-
-    //connect(ui->carta2_2, SIGNAL(clicked()), this, SLOT(enviarNombreCarta("carta2_2")));
-}
-
-void Widget::enviarNombreCarta(QString carta){
-
-    PtrSocketC->write(carta.toLatin1().data(), carta.size());
-    ui->TextEDit->appendPlainText(carta);
-    ui->Mensaje->clear();
 
 }
+
 
 
 void Widget::leer(){
@@ -557,59 +546,5 @@ void Widget::on_carta70_2_clicked()
     ui->TextEDit->appendPlainText(ui->carta70_2->objectName());
     //ui->Mensaje->clear();
 }
-
-
-
-
-
-
-/*#include "widget.h"
-#include "ui_widget.h"
-#include <QTcpSocket>
-#include <QTextStream>
-#include "mainwindow.h"
-#include <QString>
-#include <QTextStream>
-
-Widget::Widget(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::Widget)
-{
-    ui->setupUi(this);
-    mSocket = new QTcpSocket(this);
-    connect(ui->enviar, SIGNAL(clicked()), this, SLOT(enviar()));
-    //connect(mSocket, &QTcpSocket::readyRead, [&](){
-       //QTextStream T(mSocket);
-       //ui->listWidget->addItem(T.readAll());
-   // });
-}
-
-Widget::~Widget()
-{
-    delete ui;
-}
-
-
-void Widget::on_conectar_clicked()
-{
-    mSocket->connectToHost("LocalHost", 8080);
-    //g = new MainWindow(this);
-    //g->show();
-
-    //this->hide();
-    //g->duranteJuego=false;
-    //g->CantidadParejas=35;
-    //g->cronometro.setText(time.toString);
-}
-
-void Widget::enviar(){
-    QString msj = "Nombre de la carta";
-    QTextStream T(mSocket);
-    T << msj;
-    mSocket->flush();
-
-
-
-}*/
 
 

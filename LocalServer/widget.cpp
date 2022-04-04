@@ -11,6 +11,10 @@ Widget::Widget(QWidget *parent)
     PtrSocket = new QTcpSocket(this);
 
     connect(PtrServer, SIGNAL(newConnection()), this, SLOT(nuevaConexion()));
+
+    mezclarNombresCartas(NombreCartas);
+    repartirImagenes(NombreCartas, reparto);
+
 }
 
 void Widget::nuevaConexion(){
@@ -39,55 +43,21 @@ void Widget::on_Enviar_clicked()
     ui->mensaje->clear();
 }
 
-
-/*#include "widget.h"
-#include "ui_widget.h"
-#include "localserver.h"
-#include <QMessageBox>
-#include <QTextStream>
-#include <QTcpSocket>
-
-
-Widget::Widget(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::Widget)
-{
-    ui->setupUi(this);
-    mLocalServer = new LocalServer(this);
-    PtrComunicacion = new QTcpSocket(this);
-    connect(PtrComunicacion, &QTcpSocket::readyRead, [&](){
-       QTextStream T(PtrComunicacion);
-       ui->MensajeDeCLiente->addItem(T.readAll());
-    });
+void Widget::mezclarNombresCartas(QVector<QString> &NombreCartas){
+    unsigned semilla = std::chrono::system_clock::now().time_since_epoch().count();
+    shuffle(NombreCartas.begin(), NombreCartas.end(), std::default_random_engine(semilla)); //default_random_engine(semilla) es el generador de los números aleatorios
 }
 
-Widget::~Widget()
-{
-    delete ui;
+QString Widget::repartirImagenes(QVector<QString> &NombreCartas, QHash<QString, QString> &reparto){
+    auto iterador = NombreCartas.begin();
+    for (int i=0; i<35; i++){
+        QString file_name = QString::number(i)+".png";
+        reparto[(*iterador)] = file_name;
+        iterador++;
+        reparto[(*iterador)] = file_name;
+        iterador++;
+    }
+
 }
-
-
-void Widget::on_iniciar_clicked()
-{
-   if (!mLocalServer->listen(QHostAddress::LocalHost, 8080)){
-        QMessageBox::critical(this, "Error", mLocalServer->errorString());
-   }else{
-   QMessageBox::information(this, "Servidor", "Iniciado...");
-   //mLocalServer->mezclarNombresVector();
-   //mLocalServer->repartirImagenes();
-   }
-}
-
-/*void Widget::on_enviar_clicked()
-{
-
-    mLocalServer->envia(ui->msj->text());
-}
-
-void Widget::on_quitar_clicked()
-{
-    close();
-}*/
-
 
 

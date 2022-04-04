@@ -323,7 +323,6 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         switch (_id) {
         case 0: _t->leer(); break;
         case 1: _t->on_Enviar_clicked(); break;
-        case 2: _t->enviarNombreCarta((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 3: _t->on_carta1_2_clicked(); break;
         case 4: _t->on_carta2_2_clicked(); break;
         case 5: _t->on_carta3_2_clicked(); break;
