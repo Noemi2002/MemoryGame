@@ -20,6 +20,7 @@ Widget::Widget(QWidget *parent)
     }
     connect(PtrSocketC, SIGNAL(readyRead()), this, SLOT(leer()));
     connect(PtrTiempo, SIGNAL(timeout()), this, SLOT(cronometro()));
+    //connect(ui->carta02, SIGNAL(clicked(bool)), this, SLOT(pruebaEnviarNombre(ui->carta02->objectName());));
     iniciarJuego();
 
 
@@ -28,7 +29,6 @@ Widget::Widget(QWidget *parent)
 
 void Widget::iniciarJuego(){
 
-    //connect(ui->carta70_2, SIGNAL(clicked()), this, SLOT(intento()));
     tiempo.setHMS(0,0,0);
     ui->cronometro->setText(tiempo.toString("m:ss"));
     PtrTiempo->start(1000);
@@ -82,502 +82,443 @@ void Widget::on_Enviar_clicked(){
 
 //Funciones de las tarjetas
 
-void Widget::on_carta1_2_clicked()
+void Widget::on_carta01_clicked()
 {
-    PtrSocketC->write(ui->carta1_2->objectName().toLatin1().data(), ui->carta1_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta1_2->objectName());
-    //ui->Mensaje->clear();
+    std::string s = "carta01";
+    obtenerNombreNumericoCarta(s);
 }
 
-void Widget::on_carta2_2_clicked()
+void Widget::on_carta02_clicked()
 {
-    PtrSocketC->write(ui->carta2_2->objectName().toLatin1().data(), ui->carta2_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta2_2->objectName());
-    //ui->Mensaje->clear();
+    std::string s = "carta02";
+    obtenerNombreNumericoCarta(s);
 }
 
-void Widget::on_carta3_2_clicked()
+void Widget::on_carta03_clicked()
 {
-    PtrSocketC->write(ui->carta3_2->objectName().toLatin1().data(), ui->carta3_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta3_2->objectName());
-    //ui->Mensaje->clear();
+    std::string s = "carta03";
+    obtenerNombreNumericoCarta(s);
 }
 
-void Widget::on_carta4_2_clicked()
+void Widget::on_carta04_clicked()
 {
-    PtrSocketC->write(ui->carta4_2->objectName().toLatin1().data(), ui->carta4_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta4_2->objectName());
-    //ui->Mensaje->clear();
+    std::string s = "carta04";
+    obtenerNombreNumericoCarta(s);
 }
 
-void Widget::on_carta5_2_clicked()
+void Widget::on_carta05_clicked()
 {
-    PtrSocketC->write(ui->carta5_2->objectName().toLatin1().data(), ui->carta5_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta5_2->objectName());
-    //ui->Mensaje->clear();
+    std::string s = "carta05";
+    obtenerNombreNumericoCarta(s);
 }
 
-void Widget::on_carta6_2_clicked()
+void Widget::on_carta06_clicked()
 {
-    PtrSocketC->write(ui->carta6_2->objectName().toLatin1().data(), ui->carta6_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta6_2->objectName());
-    //ui->Mensaje->clear();
+    std::string s = "carta06";
+    obtenerNombreNumericoCarta(s);
 }
 
-void Widget::on_carta7_2_clicked()
+void Widget::on_carta07_clicked()
 {
-    PtrSocketC->write(ui->carta7_2->objectName().toLatin1().data(), ui->carta7_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta7_2->objectName());
-    //ui->Mensaje->clear();
+    std::string s = "carta07";
+    obtenerNombreNumericoCarta(s);
 }
 
-void Widget::on_carta8_2_clicked()
+void Widget::on_carta08_clicked()
 {
-    PtrSocketC->write(ui->carta8_2->objectName().toLatin1().data(), ui->carta8_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta8_2->objectName());
+    std::string s = "carta08";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta09_clicked()
+{
+    std::string s = "carta09";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta10_clicked()
+{
+    std::string s = "carta10";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta11_clicked()
+{
+    std::string s = "carta11";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta12_clicked()
+{
+    std::string s = "carta12";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta13_clicked()
+{
+    std::string s = "carta13";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta14_clicked()
+{
+    std::string s = "carta14";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta15_clicked()
+{
+    std::string s = "carta15";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta16_clicked()
+{
+    std::string s = "carta16";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta17_clicked()
+{
+    std::string s = "carta17";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta18_clicked()
+{
+    std::string s = "carta18";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta19_clicked()
+{
+    std::string s = "carta19";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta20_clicked()
+{
+    std::string s = "carta20";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta21_clicked()
+{
+    std::string s = "carta21";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta22_clicked()
+{
+    std::string s = "carta22";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta23_clicked()
+{
+    std::string s = "carta23";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta24_clicked()
+{
+    std::string s = "carta24";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta25_clicked()
+{
+    std::string s = "carta25";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta26_clicked()
+{
+    std::string s = "carta26";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta27_clicked()
+{
+    std::string s = "carta27";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta28_clicked()
+{
+    std::string s = "carta28";
+    obtenerNombreNumericoCarta(s);}
+
+void Widget::on_carta29_clicked()
+{
+    std::string s = "carta29";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta30_clicked()
+{
+    std::string s = "carta30";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta31_clicked()
+{
+    std::string s = "carta31";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta32_clicked()
+{
+    std::string s = "carta32";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta33_clicked()
+{
+    std::string s = "carta33";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta34_clicked()
+{   
+    std::string s = "carta34";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta35_clicked()
+{
+    std::string s = "carta35";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta36_clicked()
+{
+    std::string s = "carta36";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta37_clicked()
+{
+    std::string s = "carta37";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta38_clicked()
+{
+    std::string s = "carta38";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta39_clicked()
+{
+    std::string s = "carta39";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta40_clicked()
+{
+    std::string s = "carta40";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta41_clicked()
+{
+    std::string s = "carta41";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta42_clicked()
+{
+    std::string s = "carta42";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta43_clicked()
+{
+    std::string s = "carta43";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta44_clicked()
+{
+    std::string s = "carta44";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta45_clicked()
+{
+    std::string s = "carta45";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta46_clicked()
+{
+    std::string s = "carta46";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta47_clicked()
+{
+    std::string s = "carta47";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta48_clicked()
+{
+    std::string s = "carta48";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta49_clicked()
+{
+    std::string s = "carta49";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta50_clicked()
+{
+    std::string s = "carta50";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta51_clicked()
+{
+    std::string s = "carta51";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta52_clicked()
+{
+    std::string s = "carta52";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta53_clicked()
+{
+    std::string s = "carta53";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta54_clicked()
+{
+    std::string s = "carta54";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta55_clicked()
+{
+    std::string s = "carta55";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta56_clicked()
+{
+    std::string s = "carta56";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta57_clicked()
+{
+    std::string s = "carta57";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta58_clicked()
+{
+    std::string s = "carta58";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta59_clicked()
+{
+    std::string s = "carta59";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta60_clicked()
+{
+    std::string s = "carta60";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta61_clicked()
+{
+    std::string s = "carta61";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta62_clicked()
+{
+    std::string s = "carta62";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta63_clicked()
+{
+    std::string s = "carta63";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta64_clicked()
+{
+    std::string s = "carta64";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta65_clicked()
+{
+    std::string s = "carta65";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta66_clicked()
+{
+    std::string s = "carta66";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta67_clicked()
+{
+    std::string s = "carta67";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta68_clicked()
+{
+    std::string s = "carta68";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta69_clicked()
+{
+    std::string s = "carta69";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::on_carta70_clicked()
+{
+    std::string s = "carta70";
+    obtenerNombreNumericoCarta(s);
+}
+
+void Widget::obtenerNombreNumericoCarta(std::string s){
+
+    std::string delimiter = "carta";
+
+    size_t pos = 0;
+    std::string token;
+    while ((pos = s.find(delimiter)) != std::string::npos) {
+        token = s.substr(0, pos);
+        s.erase(0, pos + delimiter.length());
+    }
+    cortarNombre(QString::fromStdString(s));
+
+}
+
+void Widget::cortarNombre(QString nombre){
+    PtrSocketC->write(nombre.toLatin1().data(), nombre.size());
+    ui->TextEDit->appendPlainText(nombre);
     ui->Mensaje->clear();
-}
-
-void Widget::on_carta9_2_clicked()
-{
-    PtrSocketC->write(ui->carta9_2->objectName().toLatin1().data(), ui->carta9_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta9_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta10_2_clicked()
-{
-    PtrSocketC->write(ui->carta10_2->objectName().toLatin1().data(), ui->carta10_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta10_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta11_2_clicked()
-{
-    PtrSocketC->write(ui->carta11_2->objectName().toLatin1().data(), ui->carta11_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta11_2->objectName());
-    ui->Mensaje->clear();
-}
-
-void Widget::on_carta12_2_clicked()
-{
-    PtrSocketC->write(ui->carta12_2->objectName().toLatin1().data(), ui->carta12_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta12_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta13_2_clicked()
-{
-    PtrSocketC->write(ui->carta13_2->objectName().toLatin1().data(), ui->carta13_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta13_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta14_2_clicked()
-{
-    PtrSocketC->write(ui->carta14_2->objectName().toLatin1().data(), ui->carta14_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta14_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta15_2_clicked()
-{
-    PtrSocketC->write(ui->carta15_2->objectName().toLatin1().data(), ui->carta15_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta15_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta16_2_clicked()
-{
-    PtrSocketC->write(ui->carta16_2->objectName().toLatin1().data(), ui->carta16_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta16_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta17_2_clicked()
-{
-    PtrSocketC->write(ui->carta17_2->objectName().toLatin1().data(), ui->carta17_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta17_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta18_2_clicked()
-{
-    PtrSocketC->write(ui->carta18_2->objectName().toLatin1().data(), ui->carta18_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta18_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta19_2_clicked()
-{
-    PtrSocketC->write(ui->carta19_2->objectName().toLatin1().data(), ui->carta19_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta19_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta20_2_clicked()
-{
-    PtrSocketC->write(ui->carta20_2->objectName().toLatin1().data(), ui->carta20_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta20_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta21_2_clicked()
-{
-
-    PtrSocketC->write(ui->carta21_2->objectName().toLatin1().data(), ui->carta21_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta21_2->objectName());
-    //ui->Mensaje->clear();
-
-}
-
-void Widget::on_carta22_2_clicked()
-{
-    PtrSocketC->write(ui->carta22_2->objectName().toLatin1().data(), ui->carta22_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta22_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta23_2_clicked()
-{
-    PtrSocketC->write(ui->carta23_2->objectName().toLatin1().data(), ui->carta23_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta23_2->objectName());
-    ui->Mensaje->clear();
-}
-
-void Widget::on_carta24_2_clicked()
-{
-
-    PtrSocketC->write(ui->carta24_2->objectName().toLatin1().data(), ui->carta24_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta24_2->objectName());
-    //ui->Mensaje->clear();
-
-}
-
-void Widget::on_carta25_2_clicked()
-{
-    PtrSocketC->write(ui->carta25_2->objectName().toLatin1().data(), ui->carta25_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta25_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta26_2_clicked()
-{
-    PtrSocketC->write(ui->carta26_2->objectName().toLatin1().data(), ui->carta26_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta26_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta27_2_clicked()
-{
-    PtrSocketC->write(ui->carta27_2->objectName().toLatin1().data(), ui->carta27_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta27_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta28_2_clicked()
-{
-    PtrSocketC->write(ui->carta28_2->objectName().toLatin1().data(), ui->carta28_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta28_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta29_2_clicked()
-{
-    PtrSocketC->write(ui->carta29_2->objectName().toLatin1().data(), ui->carta29_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta29_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta30_2_clicked()
-{
-    PtrSocketC->write(ui->carta30_2->objectName().toLatin1().data(), ui->carta30_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta30_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta31_2_clicked()
-{
-    PtrSocketC->write(ui->carta31_2->objectName().toLatin1().data(), ui->carta31_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta31_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta32_2_clicked()
-{
-    PtrSocketC->write(ui->carta32_2->objectName().toLatin1().data(), ui->carta32_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta32_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta33_2_clicked()
-{
-    PtrSocketC->write(ui->carta33_2->objectName().toLatin1().data(), ui->carta33_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta33_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta34_2_clicked()
-{
-    PtrSocketC->write(ui->carta34_2->objectName().toLatin1().data(), ui->carta34_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta34_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta35_2_clicked()
-{
-    PtrSocketC->write(ui->carta35_2->objectName().toLatin1().data(), ui->carta35_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta35_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta36_2_clicked()
-{
-    PtrSocketC->write(ui->carta36_2->objectName().toLatin1().data(), ui->carta36_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta36_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta37_2_clicked()
-{
-    PtrSocketC->write(ui->carta37_2->objectName().toLatin1().data(), ui->carta37_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta37_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta38_2_clicked()
-{
-    PtrSocketC->write(ui->carta38_2->objectName().toLatin1().data(), ui->carta38_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta38_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta39_2_clicked()
-{
-    PtrSocketC->write(ui->carta39_2->objectName().toLatin1().data(), ui->carta39_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta39_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta40_2_clicked()
-{
-    PtrSocketC->write(ui->carta40_2->objectName().toLatin1().data(), ui->carta40_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta40_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta41_2_clicked()
-{
-    PtrSocketC->write(ui->carta41_2->objectName().toLatin1().data(), ui->carta41_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta41_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta42_2_clicked()
-{
-    PtrSocketC->write(ui->carta42_2->objectName().toLatin1().data(), ui->carta42_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta42_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta43_2_clicked()
-{
-    PtrSocketC->write(ui->carta43_2->objectName().toLatin1().data(), ui->carta43_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta43_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta44_2_clicked()
-{
-    PtrSocketC->write(ui->carta44_2->objectName().toLatin1().data(), ui->carta44_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta44_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta45_2_clicked()
-{
-    PtrSocketC->write(ui->carta45_2->objectName().toLatin1().data(), ui->carta45_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta45_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta46_2_clicked()
-{
-    PtrSocketC->write(ui->carta46_2->objectName().toLatin1().data(), ui->carta46_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta46_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta47_2_clicked()
-{
-    PtrSocketC->write(ui->carta47_2->objectName().toLatin1().data(), ui->carta47_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta47_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta48_2_clicked()
-{
-    PtrSocketC->write(ui->carta48_2->objectName().toLatin1().data(), ui->carta48_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta48_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta49_2_clicked()
-{
-    PtrSocketC->write(ui->carta49_2->objectName().toLatin1().data(), ui->carta49_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta49_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta50_2_clicked()
-{
-    PtrSocketC->write(ui->carta50_2->objectName().toLatin1().data(), ui->carta50_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta50_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta51_2_clicked()
-{
-
-    PtrSocketC->write(ui->carta51_2->objectName().toLatin1().data(), ui->carta51_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta51_2->objectName());
-    //ui->Mensaje->clear();
-
-}
-
-void Widget::on_carta52_2_clicked()
-{
-    PtrSocketC->write(ui->carta52_2->objectName().toLatin1().data(), ui->carta52_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta52_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta53_2_clicked()
-{
-    PtrSocketC->write(ui->carta53_2->objectName().toLatin1().data(), ui->carta53_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta53_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta54_2_clicked()
-{
-
-    PtrSocketC->write(ui->carta54_2->objectName().toLatin1().data(), ui->carta54_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta54_2->objectName());
-    //ui->Mensaje->clear();
-
-}
-
-void Widget::on_carta55_2_clicked()
-{
-    PtrSocketC->write(ui->carta55_2->objectName().toLatin1().data(), ui->carta55_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta55_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta56_2_clicked()
-{
-    PtrSocketC->write(ui->carta56_2->objectName().toLatin1().data(), ui->carta56_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta56_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta57_2_clicked()
-{
-    PtrSocketC->write(ui->carta57_2->objectName().toLatin1().data(), ui->carta57_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta57_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta58_2_clicked()
-{
-    PtrSocketC->write(ui->carta58_2->objectName().toLatin1().data(), ui->carta58_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta58_2->objectName());
-    ui->Mensaje->clear();
-}
-
-void Widget::on_carta59_2_clicked()
-{
-    PtrSocketC->write(ui->carta59_2->objectName().toLatin1().data(), ui->carta59_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta59_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta60_2_clicked()
-{
-    PtrSocketC->write(ui->carta60_2->objectName().toLatin1().data(), ui->carta60_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta60_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta61_2_clicked()
-{
-    PtrSocketC->write(ui->carta61_2->objectName().toLatin1().data(), ui->carta61_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta61_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta62_2_clicked()
-{
-    PtrSocketC->write(ui->carta62_2->objectName().toLatin1().data(), ui->carta62_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta62_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta63_2_clicked()
-{
-    PtrSocketC->write(ui->carta63_2->objectName().toLatin1().data(), ui->carta63_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta63_2->objectName());
-    ui->Mensaje->clear();
-}
-
-void Widget::on_carta64_2_clicked()
-{
-    PtrSocketC->write(ui->carta64_2->objectName().toLatin1().data(), ui->carta64_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta64_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta65_2_clicked()
-{
-    PtrSocketC->write(ui->carta65_2->objectName().toLatin1().data(), ui->carta65_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta65_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta66_2_clicked()
-{
-    PtrSocketC->write(ui->carta66_2->objectName().toLatin1().data(), ui->carta66_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta66_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta67_2_clicked()
-{
-    PtrSocketC->write(ui->carta67_2->objectName().toLatin1().data(), ui->carta67_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta67_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta68_2_clicked()
-{
-    PtrSocketC->write(ui->carta68_2->objectName().toLatin1().data(), ui->carta68_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta68_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta69_2_clicked()
-{
-    PtrSocketC->write(ui->carta69_2->objectName().toLatin1().data(), ui->carta69_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta69_2->objectName());
-    //ui->Mensaje->clear();
-}
-
-void Widget::on_carta70_2_clicked()
-{
-    PtrSocketC->write(ui->carta70_2->objectName().toLatin1().data(), ui->carta70_2->objectName().size());
-    ui->TextEDit->appendPlainText(ui->carta70_2->objectName());
-    //ui->Mensaje->clear();
 }
 
 
