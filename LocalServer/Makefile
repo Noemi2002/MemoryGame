@@ -52,12 +52,16 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = localserver.cpp \
+SOURCES       = Matriz.cpp \
+		localserver.cpp \
 		main.cpp \
+		matrizDisco.cpp \
 		widget.cpp qrc_img.cpp \
 		moc_widget.cpp
-OBJECTS       = localserver.o \
+OBJECTS       = Matriz.o \
+		localserver.o \
 		main.o \
+		matrizDisco.o \
 		widget.o \
 		qrc_img.o \
 		moc_widget.o
@@ -136,9 +140,13 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		LocalServer.pro localserver.h \
-		widget.h localserver.cpp \
+		LocalServer.pro Matriz.h \
+		localserver.h \
+		matrizDisco.h \
+		widget.h Matriz.cpp \
+		localserver.cpp \
 		main.cpp \
+		matrizDisco.cpp \
 		widget.cpp
 QMAKE_TARGET  = LocalServer
 DESTDIR       = 
@@ -322,8 +330,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents img.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents localserver.h widget.h $(DISTDIR)/
-	$(COPY_FILE) --parents localserver.cpp main.cpp widget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Matriz.h localserver.h matrizDisco.h widget.h $(DISTDIR)/
+	$(COPY_FILE) --parents Matriz.cpp localserver.cpp main.cpp matrizDisco.cpp widget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents widget.ui $(DISTDIR)/
 	$(COPY_FILE) --parents LocalServer_es_CR.ts $(DISTDIR)/
 
@@ -426,14 +434,21 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
+Matriz.o: Matriz.cpp Matriz.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Matriz.o Matriz.cpp
+
 localserver.o: localserver.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o localserver.o localserver.cpp
 
 main.o: main.cpp widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
+matrizDisco.o: matrizDisco.cpp matrizDisco.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o matrizDisco.o matrizDisco.cpp
+
 widget.o: widget.cpp widget.h \
-		ui_widget.h
+		ui_widget.h \
+		matrizDisco.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o widget.cpp
 
 qrc_img.o: qrc_img.cpp 

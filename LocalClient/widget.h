@@ -31,7 +31,7 @@ private slots:
     void iniciarJuego();
     void cronometro();
     void finalizarJuego();
-    void cortarNombre(QString nombre);
+    void EnviarCarta(QString nombre);
     void obtenerNombreNumericoCarta(std::string s);
 
 

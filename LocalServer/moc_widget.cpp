@@ -9,7 +9,6 @@
 #include "widget.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
-#include <QtCore/QVector>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'widget.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
@@ -22,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[13];
-    char stringdata0[162];
+    QByteArrayData data[10];
+    char stringdata0[123];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,21 +35,17 @@ QT_MOC_LITERAL(0, 0, 6), // "Widget"
 QT_MOC_LITERAL(1, 7, 13), // "nuevaConexion"
 QT_MOC_LITERAL(2, 21, 0), // ""
 QT_MOC_LITERAL(3, 22, 10), // "leerSocket"
-QT_MOC_LITERAL(4, 33, 15), // "mezclarImagenes"
-QT_MOC_LITERAL(5, 49, 17), // "QVector<QString>&"
-QT_MOC_LITERAL(6, 67, 14), // "NombreImagenes"
-QT_MOC_LITERAL(7, 82, 8), // "repartir"
-QT_MOC_LITERAL(8, 91, 23), // "QHash<QString,QString>&"
-QT_MOC_LITERAL(9, 115, 7), // "reparto"
-QT_MOC_LITERAL(10, 123, 14), // "obtenerIndices"
-QT_MOC_LITERAL(11, 138, 5), // "carta"
-QT_MOC_LITERAL(12, 144, 17) // "on_Enviar_clicked"
+QT_MOC_LITERAL(4, 33, 15), // "encontrarImagen"
+QT_MOC_LITERAL(5, 49, 23), // "QHash<QString,QString>&"
+QT_MOC_LITERAL(6, 73, 12), // "MatrizActual"
+QT_MOC_LITERAL(7, 86, 5), // "carta"
+QT_MOC_LITERAL(8, 92, 12), // "iniciarJuego"
+QT_MOC_LITERAL(9, 105, 17) // "on_Enviar_clicked"
 
     },
     "Widget\0nuevaConexion\0\0leerSocket\0"
-    "mezclarImagenes\0QVector<QString>&\0"
-    "NombreImagenes\0repartir\0QHash<QString,QString>&\0"
-    "reparto\0obtenerIndices\0carta\0"
+    "encontrarImagen\0QHash<QString,QString>&\0"
+    "MatrizActual\0carta\0iniciarJuego\0"
     "on_Enviar_clicked"
 };
 #undef QT_MOC_LITERAL
@@ -61,7 +56,7 @@ static const uint qt_meta_data_Widget[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -69,19 +64,17 @@ static const uint qt_meta_data_Widget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   44,    2, 0x08 /* Private */,
-       3,    0,   45,    2, 0x08 /* Private */,
-       4,    1,   46,    2, 0x08 /* Private */,
-       7,    2,   49,    2, 0x08 /* Private */,
-      10,    1,   54,    2, 0x08 /* Private */,
-      12,    0,   57,    2, 0x08 /* Private */,
+       1,    0,   39,    2, 0x08 /* Private */,
+       3,    0,   40,    2, 0x08 /* Private */,
+       4,    2,   41,    2, 0x08 /* Private */,
+       8,    0,   46,    2, 0x08 /* Private */,
+       9,    0,   47,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 5,    6,
-    QMetaType::Void, 0x80000000 | 5, 0x80000000 | 8,    6,    9,
-    QMetaType::Void, QMetaType::QString,   11,
+    QMetaType::Void, 0x80000000 | 5, QMetaType::QString,    6,    7,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -95,10 +88,9 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         switch (_id) {
         case 0: _t->nuevaConexion(); break;
         case 1: _t->leerSocket(); break;
-        case 2: _t->mezclarImagenes((*reinterpret_cast< QVector<QString>(*)>(_a[1]))); break;
-        case 3: _t->repartir((*reinterpret_cast< QVector<QString>(*)>(_a[1])),(*reinterpret_cast< QHash<QString,QString>(*)>(_a[2]))); break;
-        case 4: _t->obtenerIndices((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 5: _t->on_Enviar_clicked(); break;
+        case 2: _t->encontrarImagen((*reinterpret_cast< QHash<QString,QString>(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 3: _t->iniciarJuego(); break;
+        case 4: _t->on_Enviar_clicked(); break;
         default: ;
         }
     }
@@ -133,13 +125,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 5;
     }
     return _id;
 }
