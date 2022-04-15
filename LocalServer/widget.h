@@ -39,17 +39,8 @@ public:
 private slots:
     void nuevaConexion();
     void leerSocket();
-
-    //void armarMatriz(QVector<QString> &NombreImagenes, QString &matriz);
-    //void buscarEnMtriz( QString &matriz);
-
-
-    //Buscar dato, si no está, se recurre a la paginación
-    void encontrarImagen(QHash<QString, QString> &MatrizActual, QString carta);
-    //void paginacion(QString filename, QString elegida, int max);
+    //void pedirImagen(QString carta);
     void iniciarJuego();
-
-
     void on_Enviar_clicked();
 
 private:

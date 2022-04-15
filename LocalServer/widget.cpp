@@ -7,7 +7,7 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    Ptrmatriz = new Matriz();
+
     PtrServer = new QTcpServer(this);
     PtrServer->listen(QHostAddress::Any, 8080);
     PtrSocket = new QTcpSocket(this);
@@ -29,13 +29,8 @@ void Widget::leerSocket(){
     ui->texto->setReadOnly(true);
     QString mensaje = QString(buffer);
     ui->texto->appendPlainText(mensaje);
-
-
-    int numero = Ptrmatriz->obtenerNombreNumericoCarta(mensaje);
-    int i = Ptrmatriz->obtenerIndicesi(numero);
-    int j = Ptrmatriz->obtenerIndicesj(numero);
-    ui->texto->appendPlainText("Fila: "+ QString::number(i));
-    ui->texto->appendPlainText("Columna: "+ QString::number(j));
+    QString idea = Ptrmatriz->buscarImagenCarta(mensaje);
+    ui->texto->appendPlainText(idea);
 }
 
 Widget::~Widget()
@@ -48,36 +43,15 @@ void Widget::on_Enviar_clicked()
     ui->mensaje->clear();
 }
 
-/*void Widget::paginacion(QString filename, QString elegida, int max){
- *
-    QTextStream stream(&filename);
-    ifstream archivo("matriz.txt");;
-
-    int contador=0;
-    while(getline(archivo, elegida)){
-        QString line = stream.readLine();
-        if(max == contador){
-        ui->texto->appendPlainText(elegida);}
-        contador++;
-    }
+/*void Widget::pedirImagen(QString carta){
+    QString imagen = Ptrmatriz->buscarImagenCarta(fila, columna, carta);
+    ui->texto->setReadOnly(true);
+    ui->texto->appendPlainText(imagen);
 }*/
 
-void Widget::encontrarImagen(QHash<QString, QString> &MatrizActual, QString carta)
-{
-    ui->texto->setReadOnly(true);
-    if(MatrizActual[carta] == NULL){
-        //ui->texto->appendPlainText(QString(MatrizActual[carta]));
-        //paginacion("matriz.txt", carta, 1);
-        ui->texto->appendPlainText(QString("Se debe cargar la imagen"));
-        //QString imagenCorrespondiente = MatrizActual[carta];
-    }else{
-
-        ui->texto->appendPlainText(QString(MatrizActual[carta]));
-   }
-}
 
 void Widget::iniciarJuego(){
-
+    Ptrmatriz = new Matriz();
     auto ListaCartas = Ptrmatriz->NombreCartas;
     auto TablaHash = Ptrmatriz->TablasHash;
     auto MatrizActual = Ptrmatriz->MatrizActual;
@@ -87,6 +61,7 @@ void Widget::iniciarJuego(){
     Ptrmatriz->crearMatrizMemoria(ListaCartas, TablaHash);
     Ptrmatriz->EscribirMartriz("matriz.txt", TablaHash, ListaCartas);
     Ptrmatriz->EscribirMartriz("matriz2.txt", MatrizActual, ListaCartas);
+
 }
 
 

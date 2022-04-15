@@ -1,7 +1,6 @@
-carta5:1.png-carta1:1.png-carta20:2.png-carta30:2.png-carta56:3.png-carta38:3.png-carta21:4.png-carta36:4.png-carta39:5.png-
-carta33:5.png-carta9:6.png-carta50:6.png-carta11:7.png-carta55:7.png-carta53:8.png-carta61:8.png-carta3:17.png-carta42:19.png-
-carta35:10.png-carta52:10.png-carta49:11.png-carta62:11.png-carta8:12.png-carta57:12.png-carta59:13.png-carta37:13.png-carta19:14.png-
-carta32:14.png-carta43:15.png-carta54:15.png-carta24:16.png-carta51:16.png-carta26:17.png-carta3:17.png-carta68:18.png-carta47:18.png-
-carta67:19.png-carta42:19.png-carta31:20.png-carta4:20.png-carta10:21.png-carta23:21.png-carta40:22.png-carta18:22.png-carta14:23.png-
-carta16:23.png-carta70:24.png-carta64:24.png-carta28:25.png-carta29:25.png-carta25:26.png-carta15:26.png-carta13:27.png-carta41:27.png-
-carta12:28.png-carta17:28.png-carta27:29.png-carta7:29.png-carta65:30.png-carta69:30.png-carta22:31.png-carta58:31.png-carta63:32.png-
+carta22:1.png-carta5:1.png-carta29:2.png-carta20:2.png-carta10:3.png-
+carta3:3.png-carta16:4.png-carta30:4.png-carta27:5.png-carta13:5.png-
+carta1:6.png-carta18:6.png-carta28:7.png-carta9:7.png-carta17:8.png-
+carta15:8.png-carta24:9.png-carta23:9.png-carta26:10.png-carta25:10.png-
+carta14:11.png-carta2:11.png-carta7:12.png-carta6:12.png-carta12:13.png-
+carta4:13.png-carta19:14.png-carta8:14.png-carta21:15.png-carta11:15.png-

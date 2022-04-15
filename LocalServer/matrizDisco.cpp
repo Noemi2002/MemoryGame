@@ -8,6 +8,7 @@
 Matriz::Matriz()
 {
 
+
 }
 void Matriz::EscribirMartriz(QString filename, QHash<QString, QString> &TablasHash, QVector<QString> &NombreCartas){
 
@@ -16,8 +17,8 @@ void Matriz::EscribirMartriz(QString filename, QHash<QString, QString> &TablasHa
         //QMessageBox::critical(this, "ERROR", "No se encontró el archivo");
     }
     auto iterador=NombreCartas.begin();
-        for (int s=1; s <= 7; s++){ //filas
-            for(int j=1; j<=9; j++){ //columnas
+        for (int s=0; s <6; s++){ //filas
+            for(int j=0; j<5; j++){ //columnas
 
         QByteArray carta = iterador->toUtf8();
         QByteArray imagen = TablasHash[(*iterador)].toUtf8();
@@ -74,7 +75,7 @@ void Matriz::mezclarImagenes(QVector<QString> &NombreImagenes){
 
 void Matriz::MatrizDisco(QVector<QString> &NombreCartas, QHash<QString, QString> &TablasHash){
     auto iterador=NombreCartas.begin();
-    for (int i=1; i<35; i++){
+    for (int i=1; i<=15; i++){
         QString file_name= QString::number(i)+".png";
         TablasHash[(*iterador)]=file_name;
         iterador++;
@@ -85,29 +86,60 @@ void Matriz::MatrizDisco(QVector<QString> &NombreCartas, QHash<QString, QString>
 
 void Matriz::crearMatrizMemoria(QVector<QString> &NombreCartas, QHash<QString, QString> &TablaHash){
     auto iterador2 =NombreCartas.begin();
-    for(int s=1; s<4; s++){
-        for(int h=1; h<4; h++){
-            matrizMemoria[s][h] = TablaHash[(*iterador2)];
-            iterador2++;
-        }
-    }
+    int g = 0;
 
-
-    /* auto iterador2 =NombreCartas.begin();
-    for (int i = 1; i < 4; ++i) {
-            for (int j = 1; j < 5; ++j) {
-                matrizMemoria[i][j] = TablasHash[(*iterador2)];
-                iterador2++;
+    while(g < 30){
+        int idCarta = obtenerNombreNumericoCarta(*iterador2);
+        int fila = obtenerIndicesi(idCarta);
+        int columna = obtenerIndicesj(idCarta);
+        for(int s=0; s<6; s++){
+            for(int h=0; h<5; h++){
+                if (s == fila && h == columna){
+                    matrizMemoria[s][h] = TablaHash[(*iterador2)];
+                }else{
+                    if (matrizMemoria[s][h] == NULL){
+                    matrizMemoria[s][h] = "false";}
+                }
             }
         }
+        iterador2++;
+        g++;
 
-    /*auto iterador2 =NombreCartas.begin();
-    for (int i=1; i<=24; i++){
-        QString file_name= QString::number(i)+".png";
-        MatrizActual[(*iterador2)]=file_name;
-        iterador2++;
-        MatrizActual[(*iterador2)]=file_name;
-        iterador2++;
-    }*/
+    }
 
 }
+
+
+QString Matriz::buscarImagenCarta(QString nombre){
+    int numero = obtenerNombreNumericoCarta(nombre);
+    int fila = obtenerIndicesi(numero);
+    int columna = obtenerIndicesj(numero);
+    int g = 0;
+    QString respuesta;
+    while(g < 30){
+        for(int s=0; s<6; s++){
+            for(int h=0; h<5; h++){
+                if (s == fila && h == columna){
+                    respuesta = matrizMemoria[s][h];
+                    //break;
+            }
+        }
+        }
+        g++;
+    }
+    //if (respuesta == "false"){
+      //  QString nuevaRespuesta = paginacion(nombre);
+        //respuesta = nuevaRespuesta;
+    //}
+    return respuesta;
+}
+
+void Matriz::inicio(){
+    mezclarImagenes(NombreCartas);
+    MatrizDisco(NombreCartas, TablasHash);
+    crearMatrizMemoria(NombreCartas, TablasHash);
+    EscribirMartriz("matriz.txt", TablasHash, NombreCartas);
+    buscarImagenCarta("carta1");
+
+}
+
