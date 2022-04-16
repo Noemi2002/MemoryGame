@@ -1,40 +1,62 @@
-/*#include "localserver.h"
+#include "localserver.h"
 #include <QTcpSocket>
 #include <QTextStream>
+#include "matrizDisco.h"
+#include "widget.h"
+#include "ui_widget.h"
+#include <QWidget>
 
 
-LocalServer::LocalServer(QObject *parent) : QTcpServer(parent)
+LocalServer::LocalServer(QObject *parent, Ui::Widget *ptr) : QTcpServer(parent)
 {
 
-    mSocket = nullptr;
-    connect(this, &LocalServer::newConnection, [&](){
-        mSocket = nextPendingConnection();
-    });
+    ptrUso = ptr;
+    PtrServer = new QTcpServer(this);
+    PtrServer->listen(QHostAddress::Any, 8080);
+    PtrSocket = new QTcpSocket(this);
+
+    connect(PtrServer, SIGNAL(newConnection()), this, SLOT(nuevaConexion()));
+    iniciarJuego();
 
 }
 
-/*void LocalServer::mezclarNombresVector(){
-    unsigned semilla = std::chrono::system_clock::now().time_since_epoch().count();
-    shuffle(NombreTarjetas.begin(), NombreTarjetas.end(), std::default_random_engine(semilla)); //default_random_engine(semilla) es el generador de los números aleatorios
+void LocalServer::nuevaConexion(){
+    PtrSocket = PtrServer->nextPendingConnection();
+    connect(PtrSocket, SIGNAL(readyRead()), this, SLOT(leerSocket()));
 }
 
-void LocalServer::repartirImagenes(){
-    auto cabeza = NombreTarjetas.begin();
-    for(int i=1; 1<=35; i++){
-        QString file_name = QString::number(i)+".png";
-        reparto[(*cabeza)] = file_name;
-        cabeza++;
-        reparto[(*cabeza)] = file_name;
-        cabeza++;
+void LocalServer::leerSocket(){
 
-    }
+    QByteArray buffer;
+    buffer.resize(PtrSocket->bytesAvailable());
+    PtrSocket->read(buffer.data(), buffer.size());
+    QString mensaje = QString(buffer);
+    QString idea = Ptrmatriz->buscarImagenCarta(mensaje);
+    ptrUso->texto->setReadOnly(true);
+    ptrUso->texto->appendPlainText(mensaje);
+    ptrUso->texto->appendPlainText(idea);
+}
+
+void LocalServer::enviar(QString mensaje){
+    PtrSocket->write(mensaje.toLatin1().data(), mensaje.size());
+}
+
+/*void Widget::pedirImagen(QString carta){
+    QString imagen = Ptrmatriz->buscarImagenCarta(fila, columna, carta);
+    ui->texto->setReadOnly(true);
+    ui->texto->appendPlainText(imagen);
 }*/
 
-/*void LocalServer::envia(const QString &msj){
+void LocalServer::iniciarJuego(){
 
-    if (mSocket){
-    QTextStream T(mSocket);
-    T << msj;
-    mSocket->flush(); //limpiar el socket
-    }
-}*/
+    Ptrmatriz = new Matriz();
+    auto ListaCartas = Ptrmatriz->NombreCartas;
+    auto TablaHash = Ptrmatriz->TablasHash;
+    Ptrmatriz->mezclarImagenes(ListaCartas);
+
+    Ptrmatriz->MatrizDisco(ListaCartas, TablaHash);
+    Ptrmatriz->crearMatrizMemoria(ListaCartas, TablaHash);
+    Ptrmatriz->EscribirMartriz("matriz.txt", TablaHash, ListaCartas);
+
+}
+

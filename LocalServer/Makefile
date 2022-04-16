@@ -52,18 +52,20 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = Matriz.cpp \
-		localserver.cpp \
+SOURCES       = localserver.cpp \
 		main.cpp \
 		matrizDisco.cpp \
+		tarjeta.cpp \
 		widget.cpp qrc_img.cpp \
+		moc_localserver.cpp \
 		moc_widget.cpp
-OBJECTS       = Matriz.o \
-		localserver.o \
+OBJECTS       = localserver.o \
 		main.o \
 		matrizDisco.o \
+		tarjeta.o \
 		widget.o \
 		qrc_img.o \
+		moc_localserver.o \
 		moc_widget.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -140,13 +142,13 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		LocalServer.pro Matriz.h \
-		localserver.h \
+		LocalServer.pro localserver.h \
 		matrizDisco.h \
-		widget.h Matriz.cpp \
-		localserver.cpp \
+		tarjeta.h \
+		widget.h localserver.cpp \
 		main.cpp \
 		matrizDisco.cpp \
+		tarjeta.cpp \
 		widget.cpp
 QMAKE_TARGET  = LocalServer
 DESTDIR       = 
@@ -330,8 +332,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents img.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Matriz.h localserver.h matrizDisco.h widget.h $(DISTDIR)/
-	$(COPY_FILE) --parents Matriz.cpp localserver.cpp main.cpp matrizDisco.cpp widget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents localserver.h matrizDisco.h tarjeta.h widget.h $(DISTDIR)/
+	$(COPY_FILE) --parents localserver.cpp main.cpp matrizDisco.cpp tarjeta.cpp widget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents widget.ui $(DISTDIR)/
 	$(COPY_FILE) --parents LocalServer_es_CR.ts $(DISTDIR)/
 
@@ -405,9 +407,15 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	x86_64-linux-gnu-g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_widget.cpp
+compiler_moc_header_make_all: moc_localserver.cpp moc_widget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_widget.cpp
+	-$(DEL_FILE) moc_localserver.cpp moc_widget.cpp
+moc_localserver.cpp: localserver.h \
+		widget.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/mimi/Documentos/Qt/MemoryGame/LocalServer/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mimi/Documentos/Qt/MemoryGame/LocalServer -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include localserver.h -o moc_localserver.cpp
+
 moc_widget.cpp: widget.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -434,10 +442,10 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-Matriz.o: Matriz.cpp Matriz.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Matriz.o Matriz.cpp
-
-localserver.o: localserver.cpp 
+localserver.o: localserver.cpp localserver.h \
+		widget.h \
+		matrizDisco.h \
+		ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o localserver.o localserver.cpp
 
 main.o: main.cpp widget.h
@@ -446,13 +454,20 @@ main.o: main.cpp widget.h
 matrizDisco.o: matrizDisco.cpp matrizDisco.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o matrizDisco.o matrizDisco.cpp
 
+tarjeta.o: tarjeta.cpp tarjeta.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tarjeta.o tarjeta.cpp
+
 widget.o: widget.cpp widget.h \
 		ui_widget.h \
-		matrizDisco.h
+		matrizDisco.h \
+		localserver.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o widget.cpp
 
 qrc_img.o: qrc_img.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_img.o qrc_img.cpp
+
+moc_localserver.o: moc_localserver.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_localserver.o moc_localserver.cpp
 
 moc_widget.o: moc_widget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_widget.o moc_widget.cpp

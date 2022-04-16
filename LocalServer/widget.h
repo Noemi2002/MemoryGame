@@ -11,6 +11,8 @@
 #include <QMatrix>
 #include <QFile>
 
+class LocalServer;
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE
@@ -24,30 +26,16 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
-
-
-
-    QHash<QString, QString> reparto;
-    //QHash<QString, QString> MatrizActual;
-    int puntajeJugador;
-    int i;
-    int j;
-
-
+    void anadirText(QString texto);
 
 
 private slots:
-    void nuevaConexion();
-    void leerSocket();
-    //void pedirImagen(QString carta);
-    void iniciarJuego();
     void on_Enviar_clicked();
 
 private:
     Ui::Widget *ui;
-    QTcpServer *PtrServer;
-    QTcpSocket *PtrSocket;
-    Matriz *Ptrmatriz;
+    LocalServer *ptrLS;
+
 };
 #endif // WIDGET_H
 

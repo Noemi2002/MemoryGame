@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <fstream>
 
+using namespace std;
+
 Matriz::Matriz()
 {
 
@@ -16,9 +18,20 @@ void Matriz::EscribirMartriz(QString filename, QHash<QString, QString> &TablasHa
     if(!file.open(QIODevice::WriteOnly)){
         //QMessageBox::critical(this, "ERROR", "No se encontró el archivo");
     }
+    //auto iterador = NombreCartas.begin();
+    for(int t=1; t<=30; t++){
+        QString carta = "carta"+QString::number(t);
+        QByteArray imagen = TablasHash[(carta)].toUtf8();
+        file.write(carta.toUtf8() + ":" + imagen);
+        file.write("\n");
+    }
+    /*QFile file(filename);
+    if(!file.open(QIODevice::WriteOnly)){
+        //QMessageBox::critical(this, "ERROR", "No se encontró el archivo");
+    }
     auto iterador=NombreCartas.begin();
-        for (int s=0; s <6; s++){ //filas
-            for(int j=0; j<5; j++){ //columnas
+        for (int s=0; s <3; s++){ //filas
+            for(int j=0; j<10; j++){ //columnas
 
         QByteArray carta = iterador->toUtf8();
         QByteArray imagen = TablasHash[(*iterador)].toUtf8();
@@ -27,7 +40,7 @@ void Matriz::EscribirMartriz(QString filename, QHash<QString, QString> &TablasHa
         }
        file.write("\n");
 
-    }
+    }*/
     //file.write(QByteArray("De nuevo a la prueba"));
     file.flush();
     file.close();
@@ -37,18 +50,18 @@ void Matriz::EscribirMartriz(QString filename, QHash<QString, QString> &TablasHa
 int Matriz::obtenerIndicesi(int valor){
 
     i = (valor/10)%10;
-        if(valor%10==0){
-            i-=1;
-        }
+            if(valor%10==0){
+                i-=1;
+            }
     return i;
 }
 
 int Matriz::obtenerIndicesj(int valor){
 
     j = valor%10 - 1;
-        if (valor%10 == 0){
-            j = 9;
-        }
+            if (valor%10 == 0){
+                j = 9;
+            }
     return j;
 
 }
@@ -88,12 +101,12 @@ void Matriz::crearMatrizMemoria(QVector<QString> &NombreCartas, QHash<QString, Q
     auto iterador2 =NombreCartas.begin();
     int g = 0;
 
-    while(g < 30){
+    while(g < 15){
         int idCarta = obtenerNombreNumericoCarta(*iterador2);
         int fila = obtenerIndicesi(idCarta);
         int columna = obtenerIndicesj(idCarta);
-        for(int s=0; s<6; s++){
-            for(int h=0; h<5; h++){
+        for(int s=0; s<3; s++){
+            for(int h=0; h<10; h++){
                 if (s == fila && h == columna){
                     matrizMemoria[s][h] = TablaHash[(*iterador2)];
                 }else{
@@ -109,6 +122,31 @@ void Matriz::crearMatrizMemoria(QVector<QString> &NombreCartas, QHash<QString, Q
 
 }
 
+/*QString Matriz::paginacion(QString filename, QString carta, int indice){
+
+    QTextStream stream(&filename);
+    ifstream archivo("matriz.txt");
+    QString devuelta;
+    std::string elegida;
+
+    if (filename.isEmpty())     // Confirmar si no se selecciona ningún archivo, devolver
+            return;
+        QFile file(filename);
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            while (!file.atEnd())
+            {
+                QByteArray line = file.readLine();
+                QString str(line);
+                devuelta = str;
+            }
+
+            file.close();
+
+
+}
+        return devuelta;
+}*/
 
 QString Matriz::buscarImagenCarta(QString nombre){
     int numero = obtenerNombreNumericoCarta(nombre);
@@ -117,8 +155,8 @@ QString Matriz::buscarImagenCarta(QString nombre){
     int g = 0;
     QString respuesta;
     while(g < 30){
-        for(int s=0; s<6; s++){
-            for(int h=0; h<5; h++){
+        for(int s=0; s<3; s++){
+            for(int h=0; h<10; h++){
                 if (s == fila && h == columna){
                     respuesta = matrizMemoria[s][h];
                     //break;
@@ -127,10 +165,10 @@ QString Matriz::buscarImagenCarta(QString nombre){
         }
         g++;
     }
-    //if (respuesta == "false"){
-      //  QString nuevaRespuesta = paginacion(nombre);
-        //respuesta = nuevaRespuesta;
-    //}
+    /*if (respuesta == "false"){
+        QString nuevaRespuesta = paginacion("matriz.txt", nombre, numero);
+        respuesta = "false " + nuevaRespuesta;
+    }*/
     return respuesta;
 }
 
