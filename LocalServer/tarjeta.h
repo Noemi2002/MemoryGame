@@ -13,6 +13,7 @@ private:
     QString nombreCarta;
     QString imagenCarta;
 
+
 public:
     QString obtenerNombre();
     QString obtenerImagen();

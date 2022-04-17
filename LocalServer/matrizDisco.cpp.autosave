@@ -172,69 +172,10 @@ QString Matriz::paginacion(QString filename, QString carta, int indice){
 
     file.close();
     return respuesta;
-    /* QTextStream stream(&filename);
-    ifstream archivo("matriz.txt");
-    string carta12 = carta.toStdString();
-
-    int cont = 0;
-    while (getline(archivo, carta12)){
-        QString line = stream.readLine();
-
-        if (indice == cont){
-            ptrUso->texto->appendPlainText(line);
-        }
-        cont++;
-    }*/
-
 }
+  
 
-
-
-    /*QString line;
-    QFile file(filename);
-    if (file.exists()){
-        QTextStream stream(&file);
-        line = stream.readLine();
-
-        //ptrUso->texto->appendPlainText(stream.readAll());
-        // ptrUso->texto->appendPlainText("Documento no encontrado");
-    }
-
-    if(!file.open(QIODevice::ReadOnly)){
-        ptrUso->texto->appendPlainText("Error");
-    }
-
-
-   // while(!stream.atEnd()){
-     //   QString line = stream.readLine();
-       // ptrUso->texto->appendPlainText();
-
-   // }
-
-    file.close();
-    return line;
-
-    /*QTextStream stream(&filename);
-    ifstream archivo("matriz.txt");
-    QString devuelta;
-    std::string elegida;
-
-    if (filename.isEmpty())     // Confirmar si no se selecciona ningún archivo, devolver
-            return;
-        QFile file(filename);
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            while (!file.atEnd())
-            {
-                QByteArray line = file.readLine();
-                QString str(line);
-                ptrUso->texto->setPlainText(str);
-                devuelta = str;
-            }*/
-
-
-
-        //return devuelta;
+   
 
 QString Matriz::buscarImagenCarta(QString nombre){
     int numero = obtenerNombreNumericoCarta(nombre);

@@ -14,3 +14,4 @@ QString tarjeta::obtenerNombre(){
 QString tarjeta::obtenerImagen(){
     return imagenCarta;
 }
+

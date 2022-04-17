@@ -50,13 +50,14 @@ void LocalServer::enviar(QString mensaje){
 void LocalServer::iniciarJuego(){
 
     Ptrmatriz = new Matriz();
-    auto ListaCartas = Ptrmatriz->NombreCartas;
+    Ptrmatriz->inicio();
+    /*auto ListaCartas = Ptrmatriz->NombreCartas;
     auto TablaHash = Ptrmatriz->TablasHash;
     Ptrmatriz->mezclarImagenes(ListaCartas);
 
     Ptrmatriz->MatrizDisco(ListaCartas, TablaHash);
     Ptrmatriz->crearMatrizMemoria(ListaCartas, TablaHash);
-    Ptrmatriz->EscribirMartriz("matriz.txt", TablaHash, ListaCartas);
+    Ptrmatriz->EscribirMartriz("matriz.txt", TablaHash, ListaCartas);*/
 
 }
 
