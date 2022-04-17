@@ -7,6 +7,7 @@
 #include <QTimer>
 #include <QTime>
 #include <QMessageBox>
+#include<QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -23,6 +24,10 @@ public:
     QTimer *PtrTiempo=new QTimer();
     QTime tiempo;
     int parejasRestantes = 35;
+    QPushButton* primerCarta;
+    QPushButton* segundaCarta;
+    bool jugadaIniciada;
+
 
 private slots:
     void leer();
@@ -30,13 +35,17 @@ private slots:
     void on_Enviar_clicked();
     void iniciarJuego();
     void cronometro();
+    void cartaSeleccionada();
     void finalizarJuego();
     void EnviarCarta(QString nombre);
 
 
 
 
-    void on_carta01_clicked();
+
+
+
+    /*void on_carta01_clicked();
     void on_carta02_clicked();
     void on_carta03_clicked();
     void on_carta04_clicked();
@@ -65,7 +74,7 @@ private slots:
     void on_carta27_clicked();
     void on_carta28_clicked();
     void on_carta29_clicked();
-    void on_carta30_clicked();
+    void on_carta30_clicked();*/
 
 
 

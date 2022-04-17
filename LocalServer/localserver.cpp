@@ -31,10 +31,12 @@ void LocalServer::leerSocket(){
     buffer.resize(PtrSocket->bytesAvailable());
     PtrSocket->read(buffer.data(), buffer.size());
     QString mensaje = QString(buffer);
-    QString idea = Ptrmatriz->buscarImagenCarta(mensaje);
+    QByteArray idea = Ptrmatriz->buscarImagenCarta(mensaje);
+    QString loquesea = QString(idea);
+    enviar(loquesea);
     ptrUso->texto->setReadOnly(true);
     ptrUso->texto->appendPlainText(mensaje);
-    ptrUso->texto->appendPlainText(idea);
+    ptrUso->texto->appendPlainText(loquesea);
 }
 
 void LocalServer::enviar(QString mensaje){

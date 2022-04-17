@@ -20,11 +20,62 @@ Widget::Widget(QWidget *parent)
     }
     connect(PtrSocketC, SIGNAL(readyRead()), this, SLOT(leer()));
     connect(PtrTiempo, SIGNAL(timeout()), this, SLOT(cronometro()));
-    //connect(ui->carta02, SIGNAL(clicked(bool)), this, SLOT(pruebaEnviarNombre(ui->carta02->objectName());));
+
+    //Funcionalidad de las cartas
+    connect(ui->carta01, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta02, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta03, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta04, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta05, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta06, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta07, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta08, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta09, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta10, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta11, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta12, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta13, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta14, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta15, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta16, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta17, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta18, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta19, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta20, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta21, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta22, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta23, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta24, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta25, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta26, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta27, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta28, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta29, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+    connect(ui->carta30, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
+
+
+
+    //connect(ui->carta02, SIGNAL(clicked()), this, SLOT(tarjetaDescubierta()));
     iniciarJuego();
 
 
 
+}
+
+void Widget::cartaSeleccionada(){
+    primerCarta=qobject_cast<QPushButton*>(sender());
+    //mostrarImagen();
+    primerCarta->setEnabled(false);
+    if (!jugadaIniciada){
+        segundaCarta=primerCarta;
+        jugadaIniciada=true;
+    }else{
+        //definirResultadoParcial();
+        jugadaIniciada=false;
+        }
+
+    QString nombre = primerCarta->objectName();
+    EnviarCarta(nombre);
 }
 
 void Widget::iniciarJuego(){
@@ -56,8 +107,6 @@ Widget::~Widget()
 }
 
 void Widget::finalizarJuego(){
-
-
     if(parejasRestantes == 0){
         PtrTiempo->stop();
         QMessageBox::information(this, "Se acabó el juego", "¡Felicidades!, has ganado");
@@ -71,7 +120,7 @@ void Widget::finalizarJuego(){
 
 void Widget::on_Enviar_clicked(){
     PtrSocketC->write(ui->Mensaje->text().toLatin1().data(), ui->Mensaje->text().size());
-    ui->TextEDit->appendPlainText(ui->Mensaje->text());
+    //ui->TextEDit->appendPlainText(ui->Mensaje->text());
     ui->Mensaje->clear();
 
     /*PtrSocketC->write(ui->Enviar->objectName().toLatin1().data(), ui->Enviar->objectName().size());
@@ -79,6 +128,20 @@ void Widget::on_Enviar_clicked(){
     ui->Mensaje->clear();*/
 
 }
+
+void Widget::EnviarCarta(QString nombre){
+    PtrSocketC->write(nombre.toLatin1().data(), nombre.size());
+    ui->TextEDit->appendPlainText(nombre);
+    ui->Mensaje->clear();
+}
+
+
+
+
+
+
+
+/*
 
 //Funciones de las tarjetas
 
@@ -261,12 +324,7 @@ void Widget::on_carta30_clicked()
 {
     std::string s = "carta30";
     EnviarCarta(QString::fromStdString(s));
-}
+}*/
 
-void Widget::EnviarCarta(QString nombre){
-    PtrSocketC->write(nombre.toLatin1().data(), nombre.size());
-    ui->TextEDit->appendPlainText(nombre);
-    ui->Mensaje->clear();
-}
 
 

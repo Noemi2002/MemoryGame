@@ -445,7 +445,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 localserver.o: localserver.cpp localserver.h \
 		widget.h \
 		matrizDisco.h \
-		tarjeta.h \
 		ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o localserver.o localserver.cpp
 
@@ -453,8 +452,8 @@ main.o: main.cpp widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 matrizDisco.o: matrizDisco.cpp matrizDisco.h \
-		tarjeta.h \
 		widget.h \
+		tarjeta.h \
 		ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o matrizDisco.o matrizDisco.cpp
 
@@ -464,7 +463,6 @@ tarjeta.o: tarjeta.cpp tarjeta.h
 widget.o: widget.cpp widget.h \
 		ui_widget.h \
 		matrizDisco.h \
-		tarjeta.h \
 		localserver.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o widget.cpp
 

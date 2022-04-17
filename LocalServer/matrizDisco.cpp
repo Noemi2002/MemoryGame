@@ -5,7 +5,9 @@
 #include <QTextStream>
 #include <cstdlib>
 #include <fstream>
+#include <QVector>
 
+#include "tarjeta.h"
 #include "widget.h"
 #include "ui_widget.h"
 
@@ -15,24 +17,28 @@ Matriz::Matriz(Ui::Widget *ptr)
 {
     ptrUso = ptr;
 
+
 }
 void Matriz::EscribirMartriz(QString filename, QHash<QString, QString> &TablasHash, QVector<QString> &NombreCartas){
 
     QFile file(filename);
     if(!file.open(QIODevice::WriteOnly)){
-        //QMessageBox::critical(this, "ERROR", "No se encontró el archivo");
+        QMessageBox::critical(0, "ERROR", "No se encontró el archivo");
     }
-    //auto iterador = NombreCartas.begin();
-      //  QByteArray nombre = cartas[t].obtenerNombre().toUtf8();
-        //QByteArray imagen = cartas[t].obtenerImagen().toUtf8();
-        //file.write(nombre + ": " + imagen);
+    /*for(int t=1; t<=30; t++){
+        auto iterador = NombreCartas.begin();
+        QByteArray nombre = cartas[t].obtenerNombre().toUtf8();
+        QByteArray imagen = cartas[t].obtenerImagen().toUtf8();
+        file.write(nombre + ": " + imagen);
+        file.write("\n");*/
         for(int t=1; t<=30; t++){
                 QString carta = "carta"+QString::number(t);
                 QByteArray imagen = TablasHash[(carta)].toUtf8();
-                file.write(carta.toUtf8() + ":" + imagen);
+                file.write(imagen);
                 file.write("\n");
 
             }
+}
     //QFile file(filename);
     //if(!file.open(QIODevice::WriteOnly)){
         //QMessageBox::critical(this, "ERROR", "No se encontró el archivo");
@@ -48,11 +54,21 @@ void Matriz::EscribirMartriz(QString filename, QHash<QString, QString> &TablasHa
         }
        file.write("\n");
 
-    }*/
+    }
     //file.write(QByteArray("De nuevo a la prueba"));
     file.flush();
-    file.close();
+    file.close();*/
 
+
+
+QByteArray Matriz::codificacionImagen(QString imagen){
+    QByteArray b;
+    QString direccionImagen = "url(://" + imagen + ")";
+    b = direccionImagen.toUtf8();
+    QByteArray b64 = b.toBase64();
+    return b64;
+    //qDebug() << b64; // "aHR0cDovL2FtaW4tYWhtYWRpLmNvbQ=="
+    //qDebug() << QByteArray::fromBase64(b64); // "http://amin-ahmadi.com"
 }
 
 int Matriz::obtenerIndicesi(int valor){
@@ -94,21 +110,26 @@ void Matriz::mezclarImagenes(QVector<QString> &NombreImagenes){
     shuffle(NombreImagenes.begin(), NombreImagenes.end(), std::default_random_engine(semilla)); //default_random_engine(semilla) es el generador de los números aleatorios
 }
 
-void Matriz::MatrizDisco(QVector<QString> &NombreCartas, QHash<QString, QString> &TablasHash){
-    /*auto iterador=NombreImagenes.begin();
-    auto interadorCartas = cartas.begin();
-    int vueltas = 1;
+void Matriz::MatrizDisco(QVector<QString> &NombreImagenes, QHash<QString, QString> &TablasHash){
+   /* auto iterador=NombreImagenes.begin();
+    int vueltas = 0;
     for(int q=0; q<30; q++){
-        while (vueltas <= 15){
+        while (vueltas < 15){
 
-            //ptrTarjeta = ;
-            interadorCartas = new tarjeta("carta"+QString::number(q), *iterador);
-            interadorCartas++;
+            ptrTarjeta = new tarjeta();
+            ptrTarjeta->asignarNombre("carta" + QString::number(q));
+            ptrTarjeta->asignarImagen(*iterador);
+            tarjeta *ptr2Tarjeta = (tarjeta*) malloc(sizeof(tarjeta));
+            *ptr2Tarjeta = *ptrTarjeta;
+            cartas.append(*ptr2Tarjeta);
+            //cartas[q]->asignarNombre("carta" + QString::number(q));
+            //cartas[q].asignarImagen(*iterador);
+            //free (ptr2Tarjeta);
             iterador++;
             vueltas++;
         }
         vueltas = 1;
-        iterador = NombreCartas.begin();
+        iterador = NombreImagenes.begin();
 
     }*/
 
@@ -143,9 +164,7 @@ void Matriz::crearMatrizMemoria(QVector<QString> &NombreCartas, QHash<QString, Q
         }
         iterador2++;
         g++;
-
     }
-
 }
 
 QString Matriz::paginacion(QString filename, QString carta, int indice){
@@ -172,71 +191,9 @@ QString Matriz::paginacion(QString filename, QString carta, int indice){
 
     file.close();
     return respuesta;
-    /* QTextStream stream(&filename);
-    ifstream archivo("matriz.txt");
-    string carta12 = carta.toStdString();
-
-    int cont = 0;
-    while (getline(archivo, carta12)){
-        QString line = stream.readLine();
-
-        if (indice == cont){
-            ptrUso->texto->appendPlainText(line);
-        }
-        cont++;
-    }*/
-
 }
 
-
-
-    /*QString line;
-    QFile file(filename);
-    if (file.exists()){
-        QTextStream stream(&file);
-        line = stream.readLine();
-
-        //ptrUso->texto->appendPlainText(stream.readAll());
-        // ptrUso->texto->appendPlainText("Documento no encontrado");
-    }
-
-    if(!file.open(QIODevice::ReadOnly)){
-        ptrUso->texto->appendPlainText("Error");
-    }
-
-
-   // while(!stream.atEnd()){
-     //   QString line = stream.readLine();
-       // ptrUso->texto->appendPlainText();
-
-   // }
-
-    file.close();
-    return line;
-
-    /*QTextStream stream(&filename);
-    ifstream archivo("matriz.txt");
-    QString devuelta;
-    std::string elegida;
-
-    if (filename.isEmpty())     // Confirmar si no se selecciona ningún archivo, devolver
-            return;
-        QFile file(filename);
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            while (!file.atEnd())
-            {
-                QByteArray line = file.readLine();
-                QString str(line);
-                ptrUso->texto->setPlainText(str);
-                devuelta = str;
-            }*/
-
-
-
-        //return devuelta;
-
-QString Matriz::buscarImagenCarta(QString nombre){
+QByteArray Matriz::buscarImagenCarta(QString nombre){
     int numero = obtenerNombreNumericoCarta(nombre);
     int fila = obtenerIndicesi(numero);
     int columna = obtenerIndicesj(numero);
@@ -247,29 +204,25 @@ QString Matriz::buscarImagenCarta(QString nombre){
             for(int h=0; h<10; h++){
                 if (s == fila && h == columna){
                     respuesta = matrizMemoria[s][h];
-                    //break;
             }
         }
         }
         g++;
     }
     if (respuesta == "false"){
-        //respuesta = "Buscando imagen...";
-        QString nuevaRespuesta = paginacion("matriz.txt", nombre, numero);
-        //paginacion("matriz.txt", nombre, numero);
-        respuesta = "false->" + nuevaRespuesta;
+        respuesta = paginacion("matriz.txt", nombre, numero-1);
+        //respuesta = "false -> " + nuevaRespuesta;
     }
-    return respuesta;
+    QByteArray ge = codificacionImagen(respuesta);
+    //respuesta =  ge;
+    return ge;
 }
 
 void Matriz::inicio(){
     mezclarImagenes(NombreCartas);
-    MatrizDisco(NombreCartas, TablasHash);
+    mezclarImagenes(NombreImagenes);
+    MatrizDisco(NombreImagenes, TablasHash);
     crearMatrizMemoria(NombreCartas, TablasHash);
     EscribirMartriz("matriz.txt", TablasHash, NombreCartas);
-    //buscarImagenCarta("carta1");
-    //paginacion("matriz.txt", "carta12", 11);
-
-
 }
 

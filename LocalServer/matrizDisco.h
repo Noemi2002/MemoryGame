@@ -7,8 +7,9 @@
 #include <random>
 #include <QMatrix>
 #include <QFile>
-#include <tarjeta.h>
+#include <QByteArray>
 #include <widget.h>
+
 
 
 class tarjeta;
@@ -40,6 +41,7 @@ private:
 
     QString matrizMemoria[3][10];
     QVector<tarjeta> cartas;
+    QByteArray codificacionImagen(QString imagen);
 
 
 
@@ -51,7 +53,7 @@ public slots:
     int obtenerIndicesj(int valor);
     int obtenerNombreNumericoCarta(QString carta);
     void EscribirMartriz(QString filename, QHash<QString, QString> &reparto, QVector<QString> &NombreImagenes);
-    QString buscarImagenCarta(QString nombre);
+    QByteArray buscarImagenCarta(QString nombre);
     QString paginacion(QString file, QString carta, int indice);
     void inicio();
 

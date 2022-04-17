@@ -1,17 +1,20 @@
 #include "tarjeta.h"
 #include <QString>
 
-tarjeta::tarjeta(QString nombre, QString imagen)
-{
-    nombreCarta = nombre;
-    imagenCarta = imagen;
+
+void tarjeta::asignarNombre(QString nombre){
+    this->nombreCarta = nombre;
 }
 
+void tarjeta::asignarImagen(QString imagen){
+    this->imagenCarta = imagen;
+    }
+
 QString tarjeta::obtenerNombre(){
-    return nombreCarta;
+    return this->nombreCarta;
 }
 
 QString tarjeta::obtenerImagen(){
-    return imagenCarta;
+    return this->imagenCarta;
 }
 

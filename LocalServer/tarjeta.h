@@ -6,9 +6,6 @@
 
 class tarjeta
 {
-public:
-    tarjeta(QString nombre, QString imagen);
-
 private:
     QString nombreCarta;
     QString imagenCarta;
@@ -17,6 +14,8 @@ private:
 public:
     QString obtenerNombre();
     QString obtenerImagen();
+    void asignarNombre(QString nombre);
+    void asignarImagen(QString imagen);
 };
 
 #endif // TARJETA_H
