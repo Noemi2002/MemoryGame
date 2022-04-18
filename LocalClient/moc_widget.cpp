@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[14];
-    char stringdata0[156];
+    QByteArrayData data[13];
+    char stringdata0[144];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,15 +43,13 @@ QT_MOC_LITERAL(8, 88, 11), // "EnviarCarta"
 QT_MOC_LITERAL(9, 100, 6), // "nombre"
 QT_MOC_LITERAL(10, 107, 15), // "actualizarJuego"
 QT_MOC_LITERAL(11, 123, 13), // "mostrarImagen"
-QT_MOC_LITERAL(12, 137, 6), // "imagen"
-QT_MOC_LITERAL(13, 144, 11) // "avanceJuego"
+QT_MOC_LITERAL(12, 137, 6) // "imagen"
 
     },
     "Widget\0leer\0\0on_Enviar_clicked\0"
     "iniciarJuego\0cronometro\0cartaSeleccionada\0"
     "finalizarJuego\0EnviarCarta\0nombre\0"
-    "actualizarJuego\0mostrarImagen\0imagen\0"
-    "avanceJuego"
+    "actualizarJuego\0mostrarImagen\0imagen"
 };
 #undef QT_MOC_LITERAL
 
@@ -61,7 +59,7 @@ static const uint qt_meta_data_Widget[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -69,16 +67,15 @@ static const uint qt_meta_data_Widget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   64,    2, 0x08 /* Private */,
-       3,    0,   65,    2, 0x08 /* Private */,
-       4,    0,   66,    2, 0x08 /* Private */,
-       5,    0,   67,    2, 0x08 /* Private */,
-       6,    0,   68,    2, 0x08 /* Private */,
-       7,    0,   69,    2, 0x08 /* Private */,
-       8,    1,   70,    2, 0x08 /* Private */,
-      10,    0,   73,    2, 0x08 /* Private */,
-      11,    1,   74,    2, 0x08 /* Private */,
-      13,    0,   77,    2, 0x08 /* Private */,
+       1,    0,   59,    2, 0x08 /* Private */,
+       3,    0,   60,    2, 0x08 /* Private */,
+       4,    0,   61,    2, 0x08 /* Private */,
+       5,    0,   62,    2, 0x08 /* Private */,
+       6,    0,   63,    2, 0x08 /* Private */,
+       7,    0,   64,    2, 0x08 /* Private */,
+       8,    1,   65,    2, 0x08 /* Private */,
+      10,    0,   68,    2, 0x08 /* Private */,
+      11,    1,   69,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -90,7 +87,6 @@ static const uint qt_meta_data_Widget[] = {
     QMetaType::Void, QMetaType::QString,    9,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   12,
-    QMetaType::Void,
 
        0        // eod
 };
@@ -110,7 +106,6 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 6: _t->EnviarCarta((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 7: _t->actualizarJuego(); break;
         case 8: _t->mostrarImagen((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 9: _t->avanceJuego(); break;
         default: ;
         }
     }
@@ -145,13 +140,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 9;
     }
     return _id;
 }

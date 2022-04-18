@@ -159,9 +159,30 @@ void Widget::on_Enviar_clicked(){
 
 }
 
-void Widget::avanceJuego(){
+/*void Widget::avanceJuego(){
 
-}
+    //check if there is a match (the current tile matches the previous tile in the turn)
+        if (reparto[tarjetaActual->objectName()]==reparto[tarjetaAnterior->objectName()]){
+            puntaje+=15;
+            ui->lblPuntaje->setText(QString::number(puntaje));
+            parejasRestantes--;
+
+            //if there is a match, find out if all tiles have been matched.
+            finalizarJuego();
+        }
+        else{
+            puntaje-=5;
+            ui->lblPuntaje->setText(QString::number(puntaje));
+
+            //disable the whole tile section so no tiles can be turned during the 1-second "memorizing period"
+            ui->frame->setEnabled(false);
+
+            //if there is no match, let user memorize tiles and after 1 second hide tiles from current turn so they can be used on another turn
+            QTimer::singleShot(1000, this, SLOT(reiniciarTarjetas()));
+        }
+    }
+
+}*/
 
 void Widget::EnviarCarta(QString nombre){
     PtrSocketC->write(nombre.toLatin1().data(), nombre.size());

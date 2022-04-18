@@ -24,11 +24,11 @@ public:
 
 
 
-    int puntajeJugador1;
+    int puntajeJugador1 = 0;
     //int puntajeJugador2;
     void mezclarNombresVector();
     void repartirImagenes();
-    void enviar(QString mensaje);
+    void enviar(QString mensaje, int puntos);
 
 private slots:
     void nuevaConexion();
@@ -41,6 +41,7 @@ private:
 
     QTcpServer *PtrServer;
     QTcpSocket *PtrSocket;
+    QTcpSocket *mPuntajes;
     Matriz *Ptrmatriz;
     Ui::Widget *ptrUso;
 

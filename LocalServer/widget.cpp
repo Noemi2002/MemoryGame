@@ -17,7 +17,7 @@ Widget::~Widget()
 
 void Widget::on_Enviar_clicked()
 {
-    ptrLS->enviar(ui->mensaje->text());
+    ptrLS->enviar(ui->mensaje->text(), 0);
     ui->texto->appendPlainText(ui->mensaje->text());
     ui->mensaje->clear();
 }
