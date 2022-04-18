@@ -41,6 +41,8 @@ private slots:
     void finalizarJuego();
     void EnviarCarta(QString nombre);
     void actualizarJuego();
+    void mostrarImagen(QString imagen);
+    void avanceJuego();
 
 
 

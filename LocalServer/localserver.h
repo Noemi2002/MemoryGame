@@ -15,7 +15,9 @@ class LocalServer : public QTcpServer
     Q_OBJECT
 public:
     explicit LocalServer(QObject *parent = 0, Ui::Widget *ptr = 0);
-    bool JuegoIniciado;
+    bool JuegoIniciado = false;
+    QString carta1;
+    QString carta2;
     int i;
     int j;
 
@@ -23,7 +25,7 @@ public:
 
 
     int puntajeJugador1;
-    int puntajeJugador2;
+    //int puntajeJugador2;
     void mezclarNombresVector();
     void repartirImagenes();
     void enviar(QString mensaje);
@@ -32,6 +34,7 @@ private slots:
     void nuevaConexion();
     void leerSocket();
     //void pedirImagen(QString carta);
+    void obtenerResultado(QString uno, QString dos);
     void iniciarJuego();
 
 private:

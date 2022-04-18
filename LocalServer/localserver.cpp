@@ -31,9 +31,16 @@ void LocalServer::leerSocket(){
     buffer.resize(PtrSocket->bytesAvailable());
     PtrSocket->read(buffer.data(), buffer.size());
     QString mensaje = QString(buffer);
-    QByteArray idea = Ptrmatriz->buscarImagenCarta(mensaje);
+    QString idea = Ptrmatriz->buscarImagenCarta(mensaje);
     QString loquesea = QString(idea);
     enviar(loquesea);
+    if(JuegoIniciado){
+        carta1 = idea;
+    }else{
+        carta2 = carta1;
+        carta1 = idea;
+        obtenerResultado(carta1, carta2);
+    }
     ptrUso->texto->setReadOnly(true);
     ptrUso->texto->appendPlainText(mensaje);
     ptrUso->texto->appendPlainText(loquesea);
@@ -48,6 +55,13 @@ void LocalServer::enviar(QString mensaje){
     ui->texto->setReadOnly(true);
     ui->texto->appendPlainText(imagen);
 }*/
+
+void LocalServer::obtenerResultado(QString uno, QString dos){
+    if (uno == dos){
+        puntajeJugador1 += 5;
+    }
+
+}
 
 void LocalServer::iniciarJuego(){
 

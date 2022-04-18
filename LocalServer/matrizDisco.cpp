@@ -193,7 +193,8 @@ QString Matriz::paginacion(QString filename, QString carta, int indice){
     return respuesta;
 }
 
-QByteArray Matriz::buscarImagenCarta(QString nombre){
+QString Matriz::buscarImagenCarta(QString nombre){
+
     int numero = obtenerNombreNumericoCarta(nombre);
     int fila = obtenerIndicesi(numero);
     int columna = obtenerIndicesj(numero);
@@ -213,10 +214,13 @@ QByteArray Matriz::buscarImagenCarta(QString nombre){
         respuesta = paginacion("matriz.txt", nombre, numero-1);
         //respuesta = "false -> " + nuevaRespuesta;
     }
-    QByteArray ge = codificacionImagen(respuesta);
+
+    //QByteArray ge = codificacionImagen(respuesta);
     //respuesta =  ge;
-    return ge;
+    return respuesta;
 }
+
+
 
 void Matriz::inicio(){
     mezclarImagenes(NombreCartas);

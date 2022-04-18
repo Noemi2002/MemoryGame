@@ -381,7 +381,9 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-cliente.o: cliente.cpp cliente.h
+cliente.o: cliente.cpp cliente.h \
+		widget.h \
+		ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cliente.o cliente.cpp
 
 main.o: main.cpp widget.h

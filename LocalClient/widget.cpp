@@ -119,6 +119,7 @@ void Widget::leer(){
     PtrSocketC->read(buffer.data(), buffer.size());
     ui->TextEDit->setReadOnly(true);
     ui->TextEDit->appendPlainText(QString(buffer));
+    mostrarImagen(QString(buffer));
 }
 
 Widget::~Widget()
@@ -126,14 +127,18 @@ Widget::~Widget()
     delete ui;
 }
 
+void Widget::mostrarImagen(QString imagen){
+    primerCarta->setText(imagen);
+}
+
 void Widget::finalizarJuego(){
     if(parejasRestantes == 0){
         PtrTiempo->stop();
         QMessageBox::information(this, "Se acabó el juego", "¡Felicidades!, has ganado");
     }else{
-        if (tiempo.toString()=="00:00:10" && parejasRestantes != 0){
+        if (tiempo.toString()=="00:05:00" && parejasRestantes != 0){
             PtrTiempo->stop();
-            QMessageBox::information(this, "Se acabó el juego", "¡Lo siento!, has perdido");
+            QMessageBox::information(this, "Se acabó el tiempo", "¡Lo siento!, has perdido");
         }
     }
 }
@@ -151,6 +156,10 @@ void Widget::on_Enviar_clicked(){
     /*PtrSocketC->write(ui->Enviar->objectName().toLatin1().data(), ui->Enviar->objectName().size());
     ui->TextEDit->appendPlainText(ui->Enviar->objectName());
     ui->Mensaje->clear();*/
+
+}
+
+void Widget::avanceJuego(){
 
 }
 

@@ -53,7 +53,7 @@ public slots:
     int obtenerIndicesj(int valor);
     int obtenerNombreNumericoCarta(QString carta);
     void EscribirMartriz(QString filename, QHash<QString, QString> &reparto, QVector<QString> &NombreImagenes);
-    QByteArray buscarImagenCarta(QString nombre);
+    QString buscarImagenCarta(QString nombre);
     QString paginacion(QString file, QString carta, int indice);
     void inicio();
 
