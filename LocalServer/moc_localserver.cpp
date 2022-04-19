@@ -68,7 +68,7 @@ static const uint qt_meta_data_LocalServer[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    5,    6,
+    QMetaType::Int, QMetaType::QString, QMetaType::QString,    5,    6,
     QMetaType::Void,
 
        0        // eod
@@ -82,7 +82,8 @@ void LocalServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         switch (_id) {
         case 0: _t->nuevaConexion(); break;
         case 1: _t->leerSocket(); break;
-        case 2: _t->obtenerResultado((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 2: { int _r = _t->obtenerResultado((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 3: _t->iniciarJuego(); break;
         default: ;
         }

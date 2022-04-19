@@ -66,6 +66,7 @@ void Widget::cartaSeleccionada(){ //Tarjeta descubierta
     if (!jugadaIniciada){
         segundaCarta=primerCarta;
         jugadaIniciada=true;
+        turnos += 1;
     }else{
         turnos += 2;
         //ui->TextEDit->appendPlainText(QString(aumentoPuntaje));
@@ -166,7 +167,7 @@ void Widget::on_Enviar_clicked(){
 }
 
 void Widget::avanceJuego(){ //resultado parcial
-    if (aumentoPuntaje){
+    if (!aumentoPuntaje){
         ui->frame->setEnabled(false);
         QTimer::singleShot(1000, this, SLOT(reiniciarEstadoTarjetas()));
     }else{
@@ -187,12 +188,12 @@ QString Widget::obtenerImagen(QString mensaje){
         imagen = datoOriginal.substr(0, pos);
         puntos = datoOriginal.erase(0, pos + delimiter.length());
     }
-    if (stoi(puntos) != 0){
+    if (stoi(puntos) != 0 && stoi(puntos)%5 == 0){
         aumentoPuntaje = true;
         PuntajePrimerJugador = stoi(puntos);
         ui->Puntaje1->setText(QString::number(PuntajePrimerJugador));
     }
-    if (turnos%2 == 0 && turnos != 0){
+    if (turnos%3 == 0 && turnos != 0){
         avanceJuego();}
     return QString::fromStdString(imagen);
 

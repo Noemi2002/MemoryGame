@@ -28,6 +28,7 @@ void LocalServer::nuevaConexion(){
 
 void LocalServer::leerSocket(){
 
+    int aumento;
     QByteArray buffer;
     buffer.resize(PtrSocket->bytesAvailable());
     PtrSocket->read(buffer.data(), buffer.size());
@@ -40,9 +41,9 @@ void LocalServer::leerSocket(){
     }else{
         carta2 = carta1;
         carta1 = idea;
-        obtenerResultado(carta1, carta2);
+        aumento = obtenerResultado(carta1, carta2);
     }
-    enviar(loquesea, puntajeJugador1);
+    enviar(loquesea, aumento);
     ptrUso->texto->setReadOnly(true);
     ptrUso->texto->appendPlainText(mensaje);
     ptrUso->texto->appendPlainText(loquesea);
@@ -55,10 +56,14 @@ void LocalServer::enviar(QString mensaje, int puntos){
 }
 
 
-void LocalServer::obtenerResultado(QString uno, QString dos){
+int LocalServer::obtenerResultado(QString uno, QString dos){
     if (uno == dos){
         puntajeJugador1 += 5;
+        return 5;
+    }else{
+        return 0;
     }
+
 }
 
 void LocalServer::iniciarJuego(){

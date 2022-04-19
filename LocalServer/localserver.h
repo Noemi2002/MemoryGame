@@ -34,7 +34,7 @@ private slots:
     void nuevaConexion();
     void leerSocket();
     //void pedirImagen(QString carta);
-    void obtenerResultado(QString uno, QString dos);
+    int obtenerResultado(QString uno, QString dos);
     void iniciarJuego();
 
 private:
