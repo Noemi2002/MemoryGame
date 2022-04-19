@@ -53,24 +53,24 @@ Widget::Widget(QWidget *parent)
     connect(ui->carta29, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
     connect(ui->carta30, SIGNAL(clicked()), this, SLOT(cartaSeleccionada()));
 
-
-
-    //connect(ui->carta02, SIGNAL(clicked()), this, SLOT(tarjetaDescubierta()));
     iniciarJuego();
 
 
 
 }
 
-void Widget::cartaSeleccionada(){
+void Widget::cartaSeleccionada(){ //Tarjeta descubierta
+
     primerCarta=qobject_cast<QPushButton*>(sender());
-    //mostrarImagen();
     primerCarta->setEnabled(false);
     if (!jugadaIniciada){
         segundaCarta=primerCarta;
         jugadaIniciada=true;
     }else{
-        //definirResultadoParcial();
+        turnos += 2;
+        //ui->TextEDit->appendPlainText(QString(aumentoPuntaje));
+        /*if (turnos%2 == 0){
+            avanceJuego();}*/
         jugadaIniciada=false;
         }
 
@@ -80,6 +80,7 @@ void Widget::cartaSeleccionada(){
 
 void Widget::iniciarJuego(){
     jugadaIniciada=false;
+    aumentoPuntaje = false;
 
     PuntajePrimerJugador = 0;
     ui->Puntaje1->setText(QString::number(PuntajePrimerJugador));
@@ -95,21 +96,16 @@ void Widget::iniciarJuego(){
     ui->frame->setEnabled(true);
 
         //enable every tile and reset its image
-        QList<QPushButton *> botones =  ui->frame->findChildren<QPushButton*>();
+        /*QList<QPushButton *> botones =  ui->frame->findChildren<QPushButton*>();
         foreach (QPushButton* b, botones) {
             b->setEnabled(true);
-            b->setStyleSheet("#" + b->objectName() + "{ }");
-        }
-    /*tiempo.setHMS(0,0,0);
-    ui->cronometro->setText(tiempo.toString("m:ss"));
-    PtrTiempo->start(1000);*/
+            b->setStyleSheet("#" + b->objectName() + "{ }");*/
 
 }
 
 void Widget::cronometro(){
         tiempo=tiempo.addSecs(1);
         ui->cronometro->setText(tiempo.toString("m:ss"));
-
 }
 
 
@@ -119,7 +115,7 @@ void Widget::leer(){
     PtrSocketC->read(buffer.data(), buffer.size());
     ui->TextEDit->setReadOnly(true);
     ui->TextEDit->appendPlainText(QString(buffer));
-    mostrarImagen(QString(buffer));
+    mostrarImagen(obtenerImagen(QString(buffer)));
 }
 
 Widget::~Widget()
@@ -131,7 +127,7 @@ void Widget::mostrarImagen(QString imagen){
     primerCarta->setText(imagen);
 }
 
-void Widget::finalizarJuego(){
+void Widget::finalizarJuego(){ //Resultado final
     if(parejasRestantes == 0){
         PtrTiempo->stop();
         QMessageBox::information(this, "Se acabó el juego", "¡Felicidades!, has ganado");
@@ -148,6 +144,16 @@ void Widget::actualizarJuego(){
     finalizarJuego();
 }
 
+void Widget::reiniciarEstadoTarjetas(){ //reiniciar tarjetas
+    primerCarta->setText("");
+    segundaCarta->setText("");
+
+    primerCarta->setEnabled(true);
+    segundaCarta->setEnabled(true);
+
+    ui->frame->setEnabled(true);
+}
+
 void Widget::on_Enviar_clicked(){
     PtrSocketC->write(ui->Mensaje->text().toLatin1().data(), ui->Mensaje->text().size());
     //ui->TextEDit->appendPlainText(ui->Mensaje->text());
@@ -159,30 +165,38 @@ void Widget::on_Enviar_clicked(){
 
 }
 
-/*void Widget::avanceJuego(){
-
-    //check if there is a match (the current tile matches the previous tile in the turn)
-        if (reparto[tarjetaActual->objectName()]==reparto[tarjetaAnterior->objectName()]){
-            puntaje+=15;
-            ui->lblPuntaje->setText(QString::number(puntaje));
-            parejasRestantes--;
-
-            //if there is a match, find out if all tiles have been matched.
-            finalizarJuego();
+void Widget::avanceJuego(){ //resultado parcial
+    if (aumentoPuntaje){
+        ui->frame->setEnabled(false);
+        QTimer::singleShot(1000, this, SLOT(reiniciarEstadoTarjetas()));
+    }else{
+        ui->Puntaje1->setText(QString::number(PuntajePrimerJugador));
+        finalizarJuego();
+        aumentoPuntaje = false;
         }
-        else{
-            puntaje-=5;
-            ui->lblPuntaje->setText(QString::number(puntaje));
+}
 
-            //disable the whole tile section so no tiles can be turned during the 1-second "memorizing period"
-            ui->frame->setEnabled(false);
+QString Widget::obtenerImagen(QString mensaje){
+    std::string datoOriginal = mensaje.toStdString();
+    std::string delimiter = ":";
+    std::string imagen;
+    std::string puntos;
 
-            //if there is no match, let user memorize tiles and after 1 second hide tiles from current turn so they can be used on another turn
-            QTimer::singleShot(1000, this, SLOT(reiniciarTarjetas()));
-        }
+    size_t pos = 0;
+    while ((pos = datoOriginal.find(delimiter)) != std::string::npos) {
+        imagen = datoOriginal.substr(0, pos);
+        puntos = datoOriginal.erase(0, pos + delimiter.length());
     }
+    if (stoi(puntos) != 0){
+        aumentoPuntaje = true;
+        PuntajePrimerJugador = stoi(puntos);
+        ui->Puntaje1->setText(QString::number(PuntajePrimerJugador));
+    }
+    if (turnos%2 == 0 && turnos != 0){
+        avanceJuego();}
+    return QString::fromStdString(imagen);
 
-}*/
+}
 
 void Widget::EnviarCarta(QString nombre){
     PtrSocketC->write(nombre.toLatin1().data(), nombre.size());

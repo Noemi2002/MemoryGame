@@ -28,7 +28,9 @@ public:
     int PuntajeSegundoJugador;
     QPushButton* primerCarta;
     QPushButton* segundaCarta;
+    bool aumentoPuntaje;
     bool jugadaIniciada;
+    int turnos = 0;
 
 
 private slots:
@@ -42,7 +44,9 @@ private slots:
     void EnviarCarta(QString nombre);
     void actualizarJuego();
     void mostrarImagen(QString imagen);
-    //void avanceJuego();
+    void reiniciarEstadoTarjetas();
+    void avanceJuego();
+    QString obtenerImagen(QString mensaje);
 
 
 
