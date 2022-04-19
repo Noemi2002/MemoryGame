@@ -171,6 +171,7 @@ void Widget::avanceJuego(){ //resultado parcial
         ui->frame->setEnabled(false);
         QTimer::singleShot(1000, this, SLOT(reiniciarEstadoTarjetas()));
     }else{
+        parejasRestantes-=1;
         ui->Puntaje1->setText(QString::number(PuntajePrimerJugador));
         finalizarJuego();
         aumentoPuntaje = false;
