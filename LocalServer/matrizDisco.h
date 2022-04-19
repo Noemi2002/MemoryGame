@@ -55,6 +55,7 @@ public slots:
     void EscribirMartriz(QString filename, QHash<QString, QString> &reparto, QVector<QString> &NombreImagenes);
     QString buscarImagenCarta(QString nombre);
     QString paginacion(QString file, QString carta, int indice);
+    void borrarTabla(QVector<QString> &NombreCartas, QHash<QString, QString> &TablasHash);
     void inicio();
 
 

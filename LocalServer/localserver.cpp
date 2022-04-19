@@ -35,23 +35,27 @@ void LocalServer::leerSocket(){
     QString mensaje = QString(buffer);
     QString idea = Ptrmatriz->buscarImagenCarta(mensaje);
     QString loquesea = QString(idea);
+   // ptrUso->texto->appendPlainText(JuegoIniciado);
 
     if(JuegoIniciado){
         carta1 = idea;
+        carta2 = "";
+        JuegoIniciado = true;
     }else{
+        JuegoIniciado = false;
         carta2 = carta1;
         carta1 = idea;
         aumento = obtenerResultado(carta1, carta2);
     }
     enviar(loquesea, aumento);
-    ptrUso->texto->setReadOnly(true);
-    ptrUso->texto->appendPlainText(mensaje);
-    ptrUso->texto->appendPlainText(loquesea);
+    //ptrUso->texto->setReadOnly(true);
+    //ptrUso->texto->appendPlainText(mensaje);
+    //ptrUso->texto->appendPlainText(loquesea);
 }
 
 void LocalServer::enviar(QString mensaje, int puntos){
     QString nuevoMensaje = mensaje + ":" + QString::number(puntos);
-    ptrUso->texto->appendPlainText(nuevoMensaje);
+    //ptrUso->texto->appendPlainText(nuevoMensaje);
     PtrSocket->write(nuevoMensaje.toLatin1().data(), nuevoMensaje.size());
 }
 
@@ -67,6 +71,8 @@ int LocalServer::obtenerResultado(QString uno, QString dos){
 }
 
 void LocalServer::iniciarJuego(){
+    JuegoIniciado = false;
+    puntajeJugador1 = 0;
 
     Ptrmatriz = new Matriz();
     Ptrmatriz->inicio();

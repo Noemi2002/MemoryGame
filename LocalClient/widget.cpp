@@ -125,7 +125,11 @@ Widget::~Widget()
 }
 
 void Widget::mostrarImagen(QString imagen){
-    primerCarta->setText(imagen);
+    //primerCarta->setText(imagen);
+    primerCarta->setStyleSheet("#" + primerCarta->objectName() + "{ background-image: url(/home/mimi/Documentos/Qt/MemoryGame/" + imagen + ") }");
+            //button.setStyleSheet("qproperty-icon: url(:/path/to/images.png);");
+
+            //Fuente: https://www.iteramos.com/pregunta/71854/como-establecer-la-imagen-en-qpushbutton
 }
 
 void Widget::finalizarJuego(){ //Resultado final
@@ -146,8 +150,10 @@ void Widget::actualizarJuego(){
 }
 
 void Widget::reiniciarEstadoTarjetas(){ //reiniciar tarjetas
-    primerCarta->setText("");
-    segundaCarta->setText("");
+    //primerCarta->setText("");
+    //segundaCarta->setText("");
+    primerCarta->setStyleSheet("#" + primerCarta->objectName() + "{ }");
+    segundaCarta->setStyleSheet("#" + primerCarta->objectName() + "{ }");
 
     primerCarta->setEnabled(true);
     segundaCarta->setEnabled(true);

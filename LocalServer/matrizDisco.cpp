@@ -220,6 +220,15 @@ QString Matriz::buscarImagenCarta(QString nombre){
     return respuesta;
 }
 
+void Matriz::borrarTabla(QVector<QString> &NombreCartas, QHash<QString, QString> &TablasHash){
+    auto iterador=NombreCartas.begin();
+        for (int i=1; i<=30; i++){
+            //QString file_name= QString::number(i)+".png";
+            TablasHash[(*iterador)].clear();
+            iterador++;
+        }
+}
+
 
 
 void Matriz::inicio(){
@@ -228,5 +237,6 @@ void Matriz::inicio(){
     MatrizDisco(NombreImagenes, TablasHash);
     crearMatrizMemoria(NombreCartas, TablasHash);
     EscribirMartriz("matriz.txt", TablasHash, NombreCartas);
+    borrarTabla(NombreCartas, TablasHash);
 }
 
