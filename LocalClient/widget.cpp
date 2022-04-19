@@ -190,7 +190,7 @@ QString Widget::obtenerImagen(QString mensaje){
     }
     if (stoi(puntos) != 0 && stoi(puntos)%5 == 0){
         aumentoPuntaje = true;
-        PuntajePrimerJugador = stoi(puntos);
+        PuntajePrimerJugador += stoi(puntos);
         ui->Puntaje1->setText(QString::number(PuntajePrimerJugador));
     }
     if (turnos%3 == 0 && turnos != 0){
