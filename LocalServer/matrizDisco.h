@@ -56,6 +56,8 @@ public slots:
     QString buscarImagenCarta(QString nombre);
     QString paginacion(QString file, QString carta, int indice);
     void borrarTabla(QVector<QString> &NombreCartas, QHash<QString, QString> &TablasHash);
+    void cambioDeImagenes(QString imagen, int indiceActualI, int indiceActualJ);
+    QString agregarImagenMatriz(QString nombre);
     void inicio();
 
 

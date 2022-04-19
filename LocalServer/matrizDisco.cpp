@@ -190,7 +190,28 @@ QString Matriz::paginacion(QString filename, QString carta, int indice){
     }
 
     file.close();
+
+    return agregarImagenMatriz(respuesta);
+}
+
+QString Matriz::agregarImagenMatriz(QString nombre){
+    int numero = obtenerNombreNumericoCarta(nombre);
+    int fila = obtenerIndicesi(numero);
+    int columna = obtenerIndicesj(numero);
+    int g = 0;
+    QString respuesta;
+    while(g < 30){
+        for(int s=0; s<3; s++){
+            for(int h=0; h<10; h++){
+                if (s == fila && h == columna){
+                    respuesta = matrizMemoria[s][h] = nombre;
+            }
+        }
+        }
+        g++;
+    }
     return respuesta;
+
 }
 
 QString Matriz::buscarImagenCarta(QString nombre){
@@ -211,6 +232,7 @@ QString Matriz::buscarImagenCarta(QString nombre){
         g++;
     }
     if (respuesta == "false"){
+        cambioDeImagenes(nombre, fila, columna);//paginacion("matriz.txt", nombre, numero-1);
         respuesta = paginacion("matriz.txt", nombre, numero-1);
         //respuesta = "false -> " + nuevaRespuesta;
     }
@@ -227,6 +249,24 @@ void Matriz::borrarTabla(QVector<QString> &NombreCartas, QHash<QString, QString>
             TablasHash[(*iterador)].clear();
             iterador++;
         }
+}
+
+void Matriz::cambioDeImagenes(QString imagen, int indiceActualI, int indiceActualJ){
+    //paginacion("matriz.txt", nombre, numero-1);
+    int g = 0;
+    bool vuelta = false;
+    while(g < 30){
+        for(int s=0; s<3; s++){
+            for(int h=0; h<10; h++){
+                if (s != indiceActualI && h != indiceActualI && matrizMemoria[s][h] != NULL && vuelta){
+                    matrizMemoria[s][h] = "false";
+                    vuelta = true;
+            }
+        }
+        }
+        g++;
+    }
+
 }
 
 

@@ -37,7 +37,7 @@ void LocalServer::leerSocket(){
     QString loquesea = QString(idea);
    // ptrUso->texto->appendPlainText(JuegoIniciado);
 
-    if(JuegoIniciado){
+    if(!JuegoIniciado){
         carta1 = idea;
         carta2 = "";
         JuegoIniciado = true;
@@ -54,7 +54,8 @@ void LocalServer::leerSocket(){
 }
 
 void LocalServer::enviar(QString mensaje, int puntos){
-    QString nuevoMensaje = mensaje + ":" + QString::number(puntos);
+    //url(/home/mimi/Documentos/Qt/MemoryGame/" + imagen + ")
+    QString nuevoMensaje = "url(/home/mimi/Documentos/Qt/MemoryGame/" + mensaje + ")" + ":" + QString::number(puntos);
     //ptrUso->texto->appendPlainText(nuevoMensaje);
     PtrSocket->write(nuevoMensaje.toLatin1().data(), nuevoMensaje.size());
 }
@@ -71,7 +72,7 @@ int LocalServer::obtenerResultado(QString uno, QString dos){
 }
 
 void LocalServer::iniciarJuego(){
-    JuegoIniciado = false;
+    JuegoIniciado = true;
     puntajeJugador1 = 0;
 
     Ptrmatriz = new Matriz();
