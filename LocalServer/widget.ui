@@ -6,46 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>383</width>
-    <height>257</height>
+    <width>443</width>
+    <height>315</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
-  <widget class="QLineEdit" name="mensaje">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>221</width>
-     <height>25</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Enviar">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>10</y>
-     <width>89</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Enviar</string>
-   </property>
-  </widget>
-  <widget class="QPlainTextEdit" name="texto">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>50</y>
-     <width>361</width>
-     <height>191</height>
-    </rect>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections/>

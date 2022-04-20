@@ -1,6 +1,6 @@
 #include "widget.h"
 #include "ui_widget.h"
-#include "matrizDisco.h"
+#include "matriz.h"
 #include "localserver.h"
 
 Widget::Widget(QWidget *parent)
@@ -8,25 +8,12 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    Ui::Widget* servidor = this->ui;
-    ptrLS = new LocalServer(this, servidor);
+    ptrLS = new LocalServer(this);
 }
 
 Widget::~Widget()
 { delete ui;}
 
-void Widget::on_Enviar_clicked()
-{
-    ptrLS->enviar(ui->mensaje->text(), 0);
-    ui->texto->appendPlainText(ui->mensaje->text());
-    ui->mensaje->clear();
-}
-
-void Widget::anadirText(QString texto){
-    ui->texto->setReadOnly(true);
-    ui->texto->appendPlainText(texto);
-
-}
 
 
 

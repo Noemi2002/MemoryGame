@@ -14,7 +14,7 @@ class LocalServer : public QTcpServer
 {
     Q_OBJECT
 public:
-    explicit LocalServer(QObject *parent = 0, Ui::Widget *ptr = 0);
+    explicit LocalServer(QObject *parent = 0);
     bool JuegoIniciado;
     QString carta1;
     QString carta2;
@@ -43,7 +43,6 @@ private:
     QTcpSocket *PtrSocket;
     QTcpSocket *mPuntajes;
     Matriz *Ptrmatriz;
-    Ui::Widget *ptrUso;
 
 };
 

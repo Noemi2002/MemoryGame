@@ -1,5 +1,5 @@
-#ifndef MATRIZDISCO_H
-#define MATRIZDISCO_H
+#ifndef MATRIZ_H
+#define MATRIZ_H
 
 #include<QVector>
 #include <QHash>
@@ -18,7 +18,7 @@ class Widget;
 class Matriz
 {
 public:
-    Matriz(Ui::Widget *ptr = 0);
+    Matriz();
     QVector<QString> NombreCartas{"carta1","carta2","carta3","carta4","carta5","carta6","carta7",
                                    "carta8","carta9","carta10","carta11","carta12","carta13","carta14",
                                    "carta15","carta16","carta17","carta18","carta19","carta20","carta21",
@@ -57,14 +57,13 @@ public slots:
     QString paginacion(QString file, QString carta, int indice);
     void borrarTabla(QVector<QString> &NombreCartas, QHash<QString, QString> &TablasHash);
     void cambioDeImagenes(QString imagen, int indiceActualI, int indiceActualJ);
-    QString agregarImagenMatriz(QString nombre);
+    QString agregarImagenMatriz(QString nombre, QString imagen);
     void inicio();
 
 
 private slots:
     tarjeta *ptrTarjeta;
-    Ui::Widget *ptrUso;
 
 };
 
-#endif // MATRIZDISCO_H
+#endif // MATRIZ_H

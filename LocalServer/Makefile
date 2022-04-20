@@ -54,14 +54,14 @@ OBJECTS_DIR   = ./
 
 SOURCES       = localserver.cpp \
 		main.cpp \
-		matrizDisco.cpp \
+		matriz.cpp \
 		tarjeta.cpp \
 		widget.cpp qrc_img.cpp \
 		moc_localserver.cpp \
 		moc_widget.cpp
 OBJECTS       = localserver.o \
 		main.o \
-		matrizDisco.o \
+		matriz.o \
 		tarjeta.o \
 		widget.o \
 		qrc_img.o \
@@ -143,11 +143,11 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		LocalServer.pro localserver.h \
-		matrizDisco.h \
+		matriz.h \
 		tarjeta.h \
 		widget.h localserver.cpp \
 		main.cpp \
-		matrizDisco.cpp \
+		matriz.cpp \
 		tarjeta.cpp \
 		widget.cpp
 QMAKE_TARGET  = LocalServer
@@ -332,8 +332,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents img.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents localserver.h matrizDisco.h tarjeta.h widget.h $(DISTDIR)/
-	$(COPY_FILE) --parents localserver.cpp main.cpp matrizDisco.cpp tarjeta.cpp widget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents localserver.h matriz.h tarjeta.h widget.h $(DISTDIR)/
+	$(COPY_FILE) --parents localserver.cpp main.cpp matriz.cpp tarjeta.cpp widget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents widget.ui $(DISTDIR)/
 	$(COPY_FILE) --parents LocalServer_es_CR.ts $(DISTDIR)/
 
@@ -444,25 +444,26 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 localserver.o: localserver.cpp localserver.h \
 		widget.h \
-		matrizDisco.h \
+		matriz.h \
 		ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o localserver.o localserver.cpp
 
-main.o: main.cpp widget.h
+main.o: main.cpp widget.h \
+		localserver.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-matrizDisco.o: matrizDisco.cpp matrizDisco.h \
+matriz.o: matriz.cpp matriz.h \
 		widget.h \
 		tarjeta.h \
 		ui_widget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o matrizDisco.o matrizDisco.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o matriz.o matriz.cpp
 
 tarjeta.o: tarjeta.cpp tarjeta.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tarjeta.o tarjeta.cpp
 
 widget.o: widget.cpp widget.h \
 		ui_widget.h \
-		matrizDisco.h \
+		matriz.h \
 		localserver.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o widget.cpp
 

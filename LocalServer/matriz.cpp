@@ -1,4 +1,4 @@
-#include "matrizDisco.h"
+#include "matriz.h"
 #include <tarjeta.h>
 #include <QFile>
 #include <QMessageBox>
@@ -13,11 +13,8 @@
 
 using namespace std;
 
-Matriz::Matriz(Ui::Widget *ptr)
+Matriz::Matriz()
 {
-    ptrUso = ptr;
-
-
 }
 void Matriz::EscribirMartriz(QString filename, QHash<QString, QString> &TablasHash, QVector<QString> &NombreCartas){
 
@@ -191,24 +188,21 @@ QString Matriz::paginacion(QString filename, QString carta, int indice){
 
     file.close();
 
-    return agregarImagenMatriz(respuesta);
+    return agregarImagenMatriz(carta, respuesta);
 }
 
-QString Matriz::agregarImagenMatriz(QString nombre){
+QString Matriz::agregarImagenMatriz(QString nombre, QString imagen){
     int numero = obtenerNombreNumericoCarta(nombre);
     int fila = obtenerIndicesi(numero);
     int columna = obtenerIndicesj(numero);
     int g = 0;
     QString respuesta;
-    while(g < 30){
         for(int s=0; s<3; s++){
             for(int h=0; h<10; h++){
                 if (s == fila && h == columna){
-                    respuesta = matrizMemoria[s][h] = nombre;
+                    respuesta = matrizMemoria[s][h] = imagen;
             }
         }
-        }
-        g++;
     }
     return respuesta;
 
@@ -255,16 +249,13 @@ void Matriz::cambioDeImagenes(QString imagen, int indiceActualI, int indiceActua
     //paginacion("matriz.txt", nombre, numero-1);
     int g = 0;
     bool vuelta = false;
-    while(g < 30){
         for(int s=0; s<3; s++){
             for(int h=0; h<10; h++){
-                if (s != indiceActualI && h != indiceActualI && matrizMemoria[s][h] != NULL && vuelta){
+                if (s != indiceActualI && h != indiceActualJ && matrizMemoria[s][h] != "false" && !vuelta){
                     matrizMemoria[s][h] = "false";
                     vuelta = true;
             }
         }
-        }
-        g++;
     }
 
 }

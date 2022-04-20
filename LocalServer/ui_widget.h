@@ -11,9 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QPlainTextEdit>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -21,24 +18,12 @@ QT_BEGIN_NAMESPACE
 class Ui_Widget
 {
 public:
-    QLineEdit *mensaje;
-    QPushButton *Enviar;
-    QPlainTextEdit *texto;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QString::fromUtf8("Widget"));
-        Widget->resize(383, 257);
-        mensaje = new QLineEdit(Widget);
-        mensaje->setObjectName(QString::fromUtf8("mensaje"));
-        mensaje->setGeometry(QRect(10, 10, 221, 25));
-        Enviar = new QPushButton(Widget);
-        Enviar->setObjectName(QString::fromUtf8("Enviar"));
-        Enviar->setGeometry(QRect(260, 10, 89, 25));
-        texto = new QPlainTextEdit(Widget);
-        texto->setObjectName(QString::fromUtf8("texto"));
-        texto->setGeometry(QRect(10, 50, 361, 191));
+        Widget->resize(443, 315);
 
         retranslateUi(Widget);
 
@@ -48,7 +33,6 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QApplication::translate("Widget", "Widget", nullptr));
-        Enviar->setText(QApplication::translate("Widget", "Enviar", nullptr));
     } // retranslateUi
 
 };

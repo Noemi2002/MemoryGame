@@ -114,8 +114,6 @@ void Widget::leer(){
     QByteArray buffer;
     buffer.resize(PtrSocketC->bytesAvailable());
     PtrSocketC->read(buffer.data(), buffer.size());
-    ui->TextEDit->setReadOnly(true);
-    ui->TextEDit->appendPlainText(QString(buffer));
     mostrarImagen(obtenerImagen(QString(buffer)));
 }
 
@@ -137,7 +135,7 @@ void Widget::finalizarJuego(){ //Resultado final
         PtrTiempo->stop();
         QMessageBox::information(this, "Se acabó el juego", "¡Felicidades!, has ganado");
     }else{
-        if (tiempo.toString()=="00:05:00" && parejasRestantes != 0){
+        if (tiempo.toString()=="00:25:00" && parejasRestantes != 0){
             PtrTiempo->stop();
             QMessageBox::information(this, "Se acabó el tiempo", "¡Lo siento!, has perdido");
         }
@@ -159,17 +157,6 @@ void Widget::reiniciarEstadoTarjetas(){ //reiniciar tarjetas
     segundaCarta->setEnabled(true);
 
     ui->frame->setEnabled(true);
-}
-
-void Widget::on_Enviar_clicked(){
-    PtrSocketC->write(ui->Mensaje->text().toLatin1().data(), ui->Mensaje->text().size());
-    //ui->TextEDit->appendPlainText(ui->Mensaje->text());
-    ui->Mensaje->clear();
-
-    /*PtrSocketC->write(ui->Enviar->objectName().toLatin1().data(), ui->Enviar->objectName().size());
-    ui->TextEDit->appendPlainText(ui->Enviar->objectName());
-    ui->Mensaje->clear();*/
-
 }
 
 void Widget::avanceJuego(){ //resultado parcial
@@ -208,6 +195,5 @@ QString Widget::obtenerImagen(QString mensaje){
 
 void Widget::EnviarCarta(QString nombre){
     PtrSocketC->write(nombre.toLatin1().data(), nombre.size());
-    ui->TextEDit->appendPlainText(nombre);
-    ui->Mensaje->clear();
+
 }

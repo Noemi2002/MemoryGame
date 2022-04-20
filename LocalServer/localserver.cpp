@@ -1,16 +1,15 @@
 #include "localserver.h"
 #include <QTcpSocket>
 #include <QTextStream>
-#include "matrizDisco.h"
+#include "matriz.h"
 #include "widget.h"
 #include "ui_widget.h"
 #include <QWidget>
 
 
-LocalServer::LocalServer(QObject *parent, Ui::Widget *ptr) : QTcpServer(parent)
+LocalServer::LocalServer(QObject *parent) : QTcpServer(parent)
 {
 
-    ptrUso = ptr;
     PtrServer = new QTcpServer(this);
     //mPuntajes = new QTcpServer(this);
     PtrServer->listen(QHostAddress::Any, 8080);
@@ -47,6 +46,7 @@ void LocalServer::leerSocket(){
         carta1 = idea;
         aumento = obtenerResultado(carta1, carta2);
     }
+    aumento = obtenerResultado(carta1, carta2);
     enviar(loquesea, aumento);
     //ptrUso->texto->setReadOnly(true);
     //ptrUso->texto->appendPlainText(mensaje);
@@ -72,7 +72,7 @@ int LocalServer::obtenerResultado(QString uno, QString dos){
 }
 
 void LocalServer::iniciarJuego(){
-    JuegoIniciado = true;
+    JuegoIniciado = false;
     puntajeJugador1 = 0;
 
     Ptrmatriz = new Matriz();

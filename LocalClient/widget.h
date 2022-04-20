@@ -35,8 +35,6 @@ public:
 
 private slots:
     void leer();
-
-    void on_Enviar_clicked();
     void iniciarJuego();
     void cronometro();
     void cartaSeleccionada();

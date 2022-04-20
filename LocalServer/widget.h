@@ -17,7 +17,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE
 
-class Matriz;
+//class Matriz;
 
 class Widget : public QWidget
 {
@@ -26,11 +26,7 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
-    void anadirText(QString texto);
 
-
-private slots:
-    void on_Enviar_clicked();
 
 private:
     Ui::Widget *ui;
@@ -38,10 +34,3 @@ private:
 
 };
 #endif // WIDGET_H
-
-
-
-
-
-
-

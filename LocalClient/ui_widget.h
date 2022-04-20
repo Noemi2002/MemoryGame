@@ -13,8 +13,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -23,9 +21,6 @@ QT_BEGIN_NAMESPACE
 class Ui_Widget
 {
 public:
-    QPlainTextEdit *TextEDit;
-    QLineEdit *Mensaje;
-    QPushButton *Enviar;
     QLabel *Puntaje1;
     QFrame *frame;
     QPushButton *carta01;
@@ -69,15 +64,6 @@ public:
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QString::fromUtf8("Widget"));
         Widget->resize(1360, 623);
-        TextEDit = new QPlainTextEdit(Widget);
-        TextEDit->setObjectName(QString::fromUtf8("TextEDit"));
-        TextEDit->setGeometry(QRect(300, 520, 71, 81));
-        Mensaje = new QLineEdit(Widget);
-        Mensaje->setObjectName(QString::fromUtf8("Mensaje"));
-        Mensaje->setGeometry(QRect(390, 520, 171, 25));
-        Enviar = new QPushButton(Widget);
-        Enviar->setObjectName(QString::fromUtf8("Enviar"));
-        Enviar->setGeometry(QRect(470, 550, 89, 25));
         Puntaje1 = new QLabel(Widget);
         Puntaje1->setObjectName(QString::fromUtf8("Puntaje1"));
         Puntaje1->setGeometry(QRect(130, 530, 67, 17));
@@ -216,7 +202,6 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QApplication::translate("Widget", "Widget", nullptr));
-        Enviar->setText(QApplication::translate("Widget", "Enviar", nullptr));
         Puntaje1->setText(QApplication::translate("Widget", "0", nullptr));
         carta01->setText(QString());
         carta02->setText(QString());

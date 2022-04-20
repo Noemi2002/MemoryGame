@@ -13,39 +13,6 @@
   <property name="windowTitle">
    <string>Widget</string>
   </property>
-  <widget class="QPlainTextEdit" name="TextEDit">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>520</y>
-     <width>71</width>
-     <height>81</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="Mensaje">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>520</y>
-     <width>171</width>
-     <height>25</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Enviar">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>550</y>
-     <width>89</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Enviar</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="Puntaje1">
    <property name="geometry">
     <rect>

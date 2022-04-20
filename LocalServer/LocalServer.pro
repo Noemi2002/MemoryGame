@@ -20,13 +20,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     localserver.cpp \
     main.cpp \
-    matrizDisco.cpp \
+    matriz.cpp \
     tarjeta.cpp \
     widget.cpp
 
 HEADERS += \
     localserver.h \
-    matrizDisco.h \
+    matriz.h \
     tarjeta.h \
     widget.h
 
