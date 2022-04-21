@@ -2,15 +2,17 @@
 #include "ui_widget.h"
 #include <QMessageBox>
 
+
+/**
+ * Conexión del cliente al servidor mediante TCPSockets
+ * @brief Widget::Widget
+ * @param parent
+ */
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-
-    /*
-     * Conexión del cliente al servidor mediante TCPSockets
-     */
     PtrSocketC = new QTcpSocket(this);
     PtrSocketC->connectToHost("localhost", 8080);
 
@@ -59,9 +61,10 @@ Widget::Widget(QWidget *parent)
 }
 
 
-/*
+/**
  * Este método recibe la carta seleccionada y la guarda en un puntero
  * Hace la llamada a al método que envia la carta la servidor
+ * @brief Widget::cartaSeleccionada
  */
 void Widget::cartaSeleccionada(){
 
@@ -81,8 +84,9 @@ void Widget::cartaSeleccionada(){
 }
 
 
-/*
+/**
  * Este método actualiza el cronometro casa segundo.
+ * @brief Widget::cronometro
  */
 void Widget::cronometro(){
         tiempo=tiempo.addSecs(1);
@@ -91,8 +95,12 @@ void Widget::cronometro(){
 
 
 /*
+ * 
+ */
+/**
  * Recibe y lee la dirección de la imagen que manda el servidor.
  * Manda a llamar a la función que va a mostrar la imagen con la dirección recibida.
+ * @brief Widget::leer
  */
 void Widget::leer(){
     QByteArray buffer;
@@ -108,16 +116,19 @@ Widget::~Widget()
 }
 
 
-/*
+/**
  * Busca la imagen, según la dirección que recibió y le cambia el estilo al botón para mostrarla.
+ * @brief Widget::mostrarImagen
+ * @param imagen
  */
 void Widget::mostrarImagen(QString imagen){
     primerCarta->setStyleSheet("#" + primerCarta->objectName() + "{ background-image:" + imagen + "}");
 }
 
 
-/*
+/**
  * Hace la comprobación de tiempo o de la cantida de parejas restantes para dar por acabado el juego
+ * @brief Widget::finalizarJuego
  */
 void Widget::finalizarJuego(){
     if(parejasRestantes == 0){

@@ -52,11 +52,9 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = cliente.cpp \
-		main.cpp \
+SOURCES       = main.cpp \
 		widget.cpp moc_widget.cpp
-OBJECTS       = cliente.o \
-		main.o \
+OBJECTS       = main.o \
 		widget.o \
 		moc_widget.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -134,9 +132,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		LocalClient.pro cliente.h \
-		widget.h cliente.cpp \
-		main.cpp \
+		LocalClient.pro widget.h main.cpp \
 		widget.cpp
 QMAKE_TARGET  = LocalClient
 DESTDIR       = 
@@ -317,8 +313,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents cliente.h widget.h $(DISTDIR)/
-	$(COPY_FILE) --parents cliente.cpp main.cpp widget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents widget.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp widget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents widget.ui $(DISTDIR)/
 	$(COPY_FILE) --parents LocalClient_es_CR.ts $(DISTDIR)/
 
@@ -380,11 +376,6 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
-
-cliente.o: cliente.cpp cliente.h \
-		widget.h \
-		ui_widget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cliente.o cliente.cpp
 
 main.o: main.cpp widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp

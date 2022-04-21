@@ -13,61 +13,52 @@
 
 using namespace std;
 
-Matriz::Matriz()
-{
-}
+Matriz::Matriz(){}
+
+
+/**
+ * Escribe la las imágenes de las cartas en orden ascedente en el archivo txt, esto a partir de la tabla hash.
+ * @brief Matriz::EscribirMartriz
+ * @param filename
+ * @param TablasHash
+ * @param NombreCartas
+ */
 void Matriz::EscribirMartriz(QString filename, QHash<QString, QString> &TablasHash, QVector<QString> &NombreCartas){
 
     QFile file(filename);
     if(!file.open(QIODevice::WriteOnly)){
         QMessageBox::critical(0, "ERROR", "No se encontró el archivo");
     }
-    /*for(int t=1; t<=30; t++){
-        auto iterador = NombreCartas.begin();
-        QByteArray nombre = cartas[t].obtenerNombre().toUtf8();
-        QByteArray imagen = cartas[t].obtenerImagen().toUtf8();
-        file.write(nombre + ": " + imagen);
-        file.write("\n");*/
         for(int t=1; t<=30; t++){
                 QString carta = "carta"+QString::number(t);
                 QByteArray imagen = TablasHash[(carta)].toUtf8();
                 file.write(imagen);
                 file.write("\n");
-
             }
 }
-    //QFile file(filename);
-    //if(!file.open(QIODevice::WriteOnly)){
-        //QMessageBox::critical(this, "ERROR", "No se encontró el archivo");
-   // }
-    /*auto iterador=NombreCartas.begin();
-        for (int s=0; s <3; s++){ //filas
-            for(int j=0; j<10; j++){ //columnas
-
-        QByteArray carta = iterador->toUtf8();
-        QByteArray imagen = TablasHash[(*iterador)].toUtf8();
-        file.write(carta + ":" + imagen + "-");
-        iterador++;
-        }
-       file.write("\n");
-
-    }
-    //file.write(QByteArray("De nuevo a la prueba"));
-    file.flush();
-    file.close();*/
 
 
-
+/**
+ * Codifica la imagen y retorn el QByteArray de la misma.
+ * @brief Matriz::codificacionImagen
+ * @param imagen
+ * @return
+ */
 QByteArray Matriz::codificacionImagen(QString imagen){
     QByteArray b;
     QString direccionImagen = "url(://" + imagen + ")";
     b = direccionImagen.toUtf8();
     QByteArray b64 = b.toBase64();
     return b64;
-    //qDebug() << b64; // "aHR0cDovL2FtaW4tYWhtYWRpLmNvbQ=="
-    //qDebug() << QByteArray::fromBase64(b64); // "http://amin-ahmadi.com"
 }
 
+
+/**
+ * Retorna el índice i a partir del nombre de la carta para realizar la búsqued de la imagen o agregar la imagen
+ * @brief Matriz::obtenerIndicesi
+ * @param valor
+ * @return i
+ */
 int Matriz::obtenerIndicesi(int valor){
 
     i = (valor/10)%10;
@@ -77,6 +68,13 @@ int Matriz::obtenerIndicesi(int valor){
     return i;
 }
 
+
+/**
+ * Retorna el índice j a partir del nombre de la carta para realizar la búsqued de la imagen o agregar la imagen
+ * @brief Matriz::obtenerIndicesj
+ * @param valor
+ * @return
+ */
 int Matriz::obtenerIndicesj(int valor){
 
     j = valor%10 - 1;
@@ -84,9 +82,15 @@ int Matriz::obtenerIndicesj(int valor){
                 j = 9;
             }
     return j;
-
 }
 
+
+/**
+ * Este método se encarga de dividir el nombre de la carta y obtener solamente el número para posteriormente obtener lo índices.
+ * @brief Matriz::obtenerNombreNumericoCarta
+ * @param carta
+ * @return s
+ */
 int Matriz::obtenerNombreNumericoCarta(QString carta){
     std::string s = carta.toStdString();
     std::string delimiter = "carta";
@@ -98,39 +102,27 @@ int Matriz::obtenerNombreNumericoCarta(QString carta){
         s.erase(0, pos + delimiter.length());
     }
     return stoi(s);
-
-
 }
 
+
+/**
+ * Mezcla el vector con el nombre de las cartas.
+ * @brief Matriz::mezclarImagenes
+ * @param NombreImagenes
+ */
 void Matriz::mezclarImagenes(QVector<QString> &NombreImagenes){
     unsigned semilla = std::chrono::system_clock::now().time_since_epoch().count();
     shuffle(NombreImagenes.begin(), NombreImagenes.end(), std::default_random_engine(semilla)); //default_random_engine(semilla) es el generador de los números aleatorios
 }
 
-void Matriz::MatrizDisco(QVector<QString> &NombreImagenes, QHash<QString, QString> &TablasHash){
-   /* auto iterador=NombreImagenes.begin();
-    int vueltas = 0;
-    for(int q=0; q<30; q++){
-        while (vueltas < 15){
 
-            ptrTarjeta = new tarjeta();
-            ptrTarjeta->asignarNombre("carta" + QString::number(q));
-            ptrTarjeta->asignarImagen(*iterador);
-            tarjeta *ptr2Tarjeta = (tarjeta*) malloc(sizeof(tarjeta));
-            *ptr2Tarjeta = *ptrTarjeta;
-            cartas.append(*ptr2Tarjeta);
-            //cartas[q]->asignarNombre("carta" + QString::number(q));
-            //cartas[q].asignarImagen(*iterador);
-            //free (ptr2Tarjeta);
-            iterador++;
-            vueltas++;
-        }
-        vueltas = 1;
-        iterador = NombreImagenes.begin();
-
-    }*/
-
-
+/**
+ * Guarda los datos de las cartas y sus imagenes en la tabla hash.
+ * @brief Matriz::MatrizDisco
+ * @param NombreCartas
+ * @param TablasHash
+ */
+void Matriz::MatrizDisco(QVector<QString> &NombreCartas, QHash<QString, QString> &TablasHash){
     auto iterador=NombreCartas.begin();
     for (int i=1; i<=15; i++){
         QString file_name= QString::number(i)+".png";
@@ -141,6 +133,13 @@ void Matriz::MatrizDisco(QVector<QString> &NombreImagenes, QHash<QString, QStrin
     }
 }
 
+
+/**
+ * Arma la matriz que va a estar en memoria.
+ * @brief Matriz::crearMatrizMemoria
+ * @param NombreCartas
+ * @param TablaHash
+ */
 void Matriz::crearMatrizMemoria(QVector<QString> &NombreCartas, QHash<QString, QString> &TablaHash){
     auto iterador2 =NombreCartas.begin();
     int g = 0;
@@ -164,6 +163,15 @@ void Matriz::crearMatrizMemoria(QVector<QString> &NombreCartas, QHash<QString, Q
     }
 }
 
+
+/**
+ * Busca en el archivo txt cuando la imagen no está cargada en memoria.
+ * @brief Matriz::paginacion
+ * @param filename
+ * @param carta
+ * @param indice
+ * @return respuesta
+ */
 QString Matriz::paginacion(QString filename, QString carta, int indice){
 
     QString respuesta;
@@ -188,10 +196,18 @@ QString Matriz::paginacion(QString filename, QString carta, int indice){
 
     file.close();
 
-    return agregarImagenMatriz(carta, respuesta);
+    agregarImagenMatriz(carta, respuesta);
+    return respuesta;
 }
 
-QString Matriz::agregarImagenMatriz(QString nombre, QString imagen){
+
+/**
+ * Agrega la la imagen obtenida en el método de paginación en la matriz.
+ * @brief Matriz::agregarImagenMatriz
+ * @param nombre
+ * @param imagen
+ */
+void Matriz::agregarImagenMatriz(QString nombre, QString imagen){
     int numero = obtenerNombreNumericoCarta(nombre);
     int fila = obtenerIndicesi(numero);
     int columna = obtenerIndicesj(numero);
@@ -204,12 +220,17 @@ QString Matriz::agregarImagenMatriz(QString nombre, QString imagen){
             }
         }
     }
-    return respuesta;
 
 }
 
-QString Matriz::buscarImagenCarta(QString nombre){
 
+/**
+ * Busca en la matriz si la imagen de la carta enviada por el cliente está en memoria, sino llama a la función de paginación y a cambioDeImagenes.
+ * @brief Matriz::buscarImagenCarta
+ * @param nombre
+ * @return respuesta
+ */
+QString Matriz::buscarImagenCarta(QString nombre){
     int numero = obtenerNombreNumericoCarta(nombre);
     int fila = obtenerIndicesi(numero);
     int columna = obtenerIndicesj(numero);
@@ -228,14 +249,17 @@ QString Matriz::buscarImagenCarta(QString nombre){
     if (respuesta == "false"){
         cambioDeImagenes(nombre, fila, columna);//paginacion("matriz.txt", nombre, numero-1);
         respuesta = paginacion("matriz.txt", nombre, numero-1);
-        //respuesta = "false -> " + nuevaRespuesta;
     }
-
-    //QByteArray ge = codificacionImagen(respuesta);
-    //respuesta =  ge;
     return respuesta;
 }
 
+
+/**
+ * Borra la tabla hash, para que no quede en memoria.
+ * @brief Matriz::borrarTabla
+ * @param NombreCartas
+ * @param TablasHash
+ */
 void Matriz::borrarTabla(QVector<QString> &NombreCartas, QHash<QString, QString> &TablasHash){
     auto iterador=NombreCartas.begin();
         for (int i=1; i<=30; i++){
@@ -245,6 +269,15 @@ void Matriz::borrarTabla(QVector<QString> &NombreCartas, QHash<QString, QString>
         }
 }
 
+
+/**
+ * Este método lo que hace es quitar es quitar una carta que sea diferente a la elegida para luego agregar la que no estaba en memoria, esto
+ * para que se mantengan solo 10 cartas en memoria.
+ * @brief Matriz::cambioDeImagenes
+ * @param imagen
+ * @param indiceActualI
+ * @param indiceActualJ
+ */
 void Matriz::cambioDeImagenes(QString imagen, int indiceActualI, int indiceActualJ){
     //paginacion("matriz.txt", nombre, numero-1);
     int g = 0;
@@ -261,11 +294,13 @@ void Matriz::cambioDeImagenes(QString imagen, int indiceActualI, int indiceActua
 }
 
 
-
+/**
+ * Este método llama a las principales funciones de esta clae.
+ * @brief Matriz::inicio
+ */
 void Matriz::inicio(){
-    mezclarImagenes(NombreCartas);
-    mezclarImagenes(NombreImagenes);
-    MatrizDisco(NombreImagenes, TablasHash);
+    mezclarImagenes(NombreCartas);;
+    MatrizDisco(NombreCartas, TablasHash);
     crearMatrizMemoria(NombreCartas, TablasHash);
     EscribirMartriz("matriz.txt", TablasHash, NombreCartas);
     borrarTabla(NombreCartas, TablasHash);

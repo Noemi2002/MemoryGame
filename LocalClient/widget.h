@@ -22,17 +22,6 @@ public:
     ~Widget();
 
 
-    QTime tiempo;
-    int parejasRestantes;
-    int PuntajePrimerJugador;
-    int PuntajeSegundoJugador;
-    QPushButton* primerCarta;
-    QPushButton* segundaCarta;
-    bool aumentoPuntaje;
-    bool jugadaIniciada;
-    int turnos = 0;
-
-
 private slots:
     void leer();
     void iniciarJuego();
@@ -46,13 +35,19 @@ private slots:
     void avanceJuego();
     QString obtenerImagen(QString mensaje);
 
-
-
-
 private:
     Ui::Widget *ui;
     QTcpSocket *PtrSocketC;
     QTimer *PtrTiempo=new QTimer();
+    QTime tiempo;
+    int parejasRestantes;
+    int PuntajePrimerJugador;
+    int PuntajeSegundoJugador;
+    QPushButton* primerCarta;
+    QPushButton* segundaCarta;
+    bool aumentoPuntaje;
+    bool jugadaIniciada;
+    int turnos = 0;
 };
 #endif // WIDGET_H
 

@@ -33,6 +33,7 @@ public:
 
     QHash<QString, QString> MatrizActual;
     QHash<QString, QString> TablasHash;
+    QString buscarImagenCarta(QString nombre);
 
 
 private:
@@ -46,6 +47,12 @@ private:
 
 
 public slots:
+
+    void inicio();
+
+
+private slots:
+    tarjeta *ptrTarjeta;
     void mezclarImagenes(QVector<QString> &NombreImagenes);
     void MatrizDisco(QVector<QString> &NombreCartas, QHash<QString, QString> &TablasHash);
     void crearMatrizMemoria(QVector<QString> &NombreCartas, QHash<QString, QString> &TablaHash);
@@ -53,16 +60,11 @@ public slots:
     int obtenerIndicesj(int valor);
     int obtenerNombreNumericoCarta(QString carta);
     void EscribirMartriz(QString filename, QHash<QString, QString> &reparto, QVector<QString> &NombreImagenes);
-    QString buscarImagenCarta(QString nombre);
+
     QString paginacion(QString file, QString carta, int indice);
     void borrarTabla(QVector<QString> &NombreCartas, QHash<QString, QString> &TablasHash);
     void cambioDeImagenes(QString imagen, int indiceActualI, int indiceActualJ);
-    QString agregarImagenMatriz(QString nombre, QString imagen);
-    void inicio();
-
-
-private slots:
-    tarjeta *ptrTarjeta;
+    void agregarImagenMatriz(QString nombre, QString imagen);
 
 };
 
