@@ -1,4 +1,3 @@
-
 #include <curses.h>
 #include <ncurses.h>
 #include <unistd.h>
@@ -14,31 +13,30 @@ unsigned long MemTotal;
 void get_meminfo(MEM_OCCUPY *lpMemory)
 {
     FILE *fd; // Object file
-    char buff[128]; // Load info from file
-    //fd = fopen("/proc/self/stat", "r"); // Read memory usage File
-    fd = fopen("/proc/meminfo", "r"); // Read memory usage File
+    char buff[128]; // Carga la información desde del archivo
+    fd = fopen("/proc/meminfo", "r"); // Lee el uso de la memoria desde el archivo
 
-    initscr(); // init screen and sets up screen
+    initscr(); // inicializa la ventana
     clear();
 
-    for(int i = 0; i < 45; i++) // Read file info and prints in screen
+    for(int i = 0; i < 45; i++) // Lee el archivo y lo muestra en pantalla
     {
         fgets(buff, sizeof(buff), fd);
         sscanf(buff, "%s %lu ", lpMemory->name1, &lpMemory->MemTotal);
         printw(buff);
-        refresh(); // refreshes the screen
+        refresh(); // refresca la ventana
     }
 
-    fclose(fd); // Close File
-    getch(); // pause the screen output
-    sleep(2); // Sleep time in seconds
-    endwin(); // deallocates memory and ends ncurses
+    fclose(fd); // Cierra el archivo
+    getch(); // Pausa el output mostrado en pantalla
+    sleep(2); // Duerme uno segundos
+    endwin(); // desasigna memoria y finaliza ncurses
 }
 
 int main(int argc, char *argv[])
 {
     MEM_OCCUPY *lpMemory;
-    for(int i = 0; i < 10; i++) // Read file info and prints in screen
+    for(int i = 0; i < 10; i++)
     {
         get_meminfo(lpMemory);
     }

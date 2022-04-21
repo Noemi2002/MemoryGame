@@ -225,7 +225,6 @@ QString Widget::obtenerImagen(QString mensaje){
  */
 void Widget::EnviarCarta(QString nombre){
     PtrSocketC->write(nombre.toLatin1().data(), nombre.size());
-
 }
 
 
@@ -241,7 +240,6 @@ void Widget::iniciarJuego(){
     ui->Puntaje1->setText(QString::number(PuntajePrimerJugador));
 
     PuntajeSegundoJugador = 0;
-    ui->Puntaje2->setText(QString::number(PuntajeSegundoJugador));;
 
     parejasRestantes=15;
 

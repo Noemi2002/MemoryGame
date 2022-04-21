@@ -55,21 +55,19 @@ public:
     QPushButton *carta27;
     QLabel *cronometro;
     QLabel *titulo;
-    QLabel *Puntaje2;
     QLabel *PrimerJugador;
-    QLabel *SegundoJugador;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QString::fromUtf8("Widget"));
-        Widget->resize(1360, 623);
+        Widget->resize(1360, 566);
         Puntaje1 = new QLabel(Widget);
         Puntaje1->setObjectName(QString::fromUtf8("Puntaje1"));
         Puntaje1->setGeometry(QRect(130, 530, 67, 17));
         frame = new QFrame(Widget);
         frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(20, 40, 1321, 471));
+        frame->setGeometry(QRect(20, 50, 1321, 471));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         carta01 = new QPushButton(frame);
@@ -164,23 +162,20 @@ public:
         carta27->setGeometry(QRect(790, 310, 121, 111));
         cronometro = new QLabel(Widget);
         cronometro->setObjectName(QString::fromUtf8("cronometro"));
-        cronometro->setGeometry(QRect(1200, 10, 121, 20));
+        cronometro->setGeometry(QRect(1200, 20, 121, 20));
         QFont font;
         font.setFamily(QString::fromUtf8("Ubuntu Condensed"));
         font.setBold(true);
         cronometro->setFont(font);
         titulo = new QLabel(Widget);
         titulo->setObjectName(QString::fromUtf8("titulo"));
-        titulo->setGeometry(QRect(20, 0, 171, 31));
+        titulo->setGeometry(QRect(30, 10, 171, 31));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Ubuntu Condensed"));
         font1.setPointSize(20);
         font1.setBold(true);
         font1.setItalic(true);
         titulo->setFont(font1);
-        Puntaje2 = new QLabel(Widget);
-        Puntaje2->setObjectName(QString::fromUtf8("Puntaje2"));
-        Puntaje2->setGeometry(QRect(130, 570, 67, 17));
         PrimerJugador = new QLabel(Widget);
         PrimerJugador->setObjectName(QString::fromUtf8("PrimerJugador"));
         PrimerJugador->setGeometry(QRect(60, 530, 67, 17));
@@ -189,10 +184,6 @@ public:
         font2.setBold(true);
         font2.setItalic(true);
         PrimerJugador->setFont(font2);
-        SegundoJugador = new QLabel(Widget);
-        SegundoJugador->setObjectName(QString::fromUtf8("SegundoJugador"));
-        SegundoJugador->setGeometry(QRect(60, 570, 67, 17));
-        SegundoJugador->setFont(font2);
 
         retranslateUi(Widget);
 
@@ -235,9 +226,7 @@ public:
         carta27->setText(QString());
         cronometro->setText(QApplication::translate("Widget", "Cron\303\263metro", nullptr));
         titulo->setText(QApplication::translate("Widget", "Memory Game", nullptr));
-        Puntaje2->setText(QApplication::translate("Widget", "0", nullptr));
         PrimerJugador->setText(QApplication::translate("Widget", "Player 1:", nullptr));
-        SegundoJugador->setText(QApplication::translate("Widget", "Player 2:", nullptr));
     } // retranslateUi
 
 };

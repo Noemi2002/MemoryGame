@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1360</width>
-    <height>623</height>
+    <height>566</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>40</y>
+     <y>50</y>
      <width>1321</width>
      <height>471</height>
     </rect>
@@ -436,7 +436,7 @@
    <property name="geometry">
     <rect>
      <x>1200</x>
-     <y>10</y>
+     <y>20</y>
      <width>121</width>
      <height>20</height>
     </rect>
@@ -454,8 +454,8 @@
   <widget class="QLabel" name="titulo">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>0</y>
+     <x>30</x>
+     <y>10</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -470,19 +470,6 @@
    </property>
    <property name="text">
     <string>Memory Game</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="Puntaje2">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>570</y>
-     <width>67</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>0</string>
    </property>
   </widget>
   <widget class="QLabel" name="PrimerJugador">
@@ -503,26 +490,6 @@
    </property>
    <property name="text">
     <string>Player 1:</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="SegundoJugador">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>570</y>
-     <width>67</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Ubuntu Condensed</family>
-     <italic>true</italic>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Player 2:</string>
    </property>
   </widget>
  </widget>
