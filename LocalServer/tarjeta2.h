@@ -1,13 +1,11 @@
-#ifndef TARJETA_H
-#define TARJETA_H
+#ifndef TARJETA2_H
+#define TARJETA2_H
+
 #include <QString>
 
 
-class Tarjeta
+class tarjeta
 {
-public:
-    Tarjeta(QString nombre, QString imagen);
-
 private:
     QString nombreCarta;
     QString imagenCarta;
@@ -20,5 +18,4 @@ public:
     void asignarImagen(QString imagen);
 };
 
-
-#endif // TARJETA_H
+#endif // TARJETA2_H

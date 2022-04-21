@@ -17,6 +17,11 @@ public:
     explicit LocalServer(QObject *parent = 0);
     void mezclarNombresVector();
     void repartirImagenes();
+    int obtenerPuntaje();
+    int devolverPageFault();
+    QString obtenerCartas(int num);
+    int parejasRestantes;
+
 
 
 

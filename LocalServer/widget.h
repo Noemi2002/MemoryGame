@@ -2,14 +2,8 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include <QTcpServer>
-#include <QTcpSocket>
-#include<QVector>
-#include <QHash>
-#include<QString>
-#include <random>
-#include <QMatrix>
-#include <QFile>
+#include<QTimer>
+
 
 class LocalServer;
 
@@ -27,10 +21,18 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
+private slots:
+    void actualizarInterfaz();
+    void process_mem_usage(double& vm_usage, double& resident_set);
+    void llamadaCartas();
+
+
 
 private:
     Ui::Widget *ui;
     LocalServer *ptrLS;
+    QTimer *timer=new QTimer();
+
 
 };
 #endif // WIDGET_H

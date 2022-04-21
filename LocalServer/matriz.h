@@ -12,7 +12,7 @@
 
 
 
-class tarjeta;
+class Tarjeta;
 class Widget;
 
 class Matriz
@@ -29,6 +29,8 @@ public:
     QVector<QString> NombreImagenes{"1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png" ,"10.png",
                                     "11.png" ,"12.png" ,"13.png", "14.png", "15.png"};
 
+    QVector<Tarjeta> cartasCompletas;
+
 
 
     QHash<QString, QString> MatrizActual;
@@ -41,18 +43,19 @@ private:
     int j;
 
     QString matrizMemoria[3][10];
-    QVector<tarjeta> cartas;
+    QVector<Tarjeta> cartas;
     QByteArray codificacionImagen(QString imagen);
+    int pageFaults;
 
 
 
 public slots:
-
+    int obtenerPageFaults();
     void inicio();
 
 
 private slots:
-    tarjeta *ptrTarjeta;
+    Tarjeta *ptrTarjeta;
     void mezclarImagenes(QVector<QString> &NombreImagenes);
     void MatrizDisco(QVector<QString> &NombreCartas, QHash<QString, QString> &TablasHash);
     void crearMatrizMemoria(QVector<QString> &NombreCartas, QHash<QString, QString> &TablaHash);

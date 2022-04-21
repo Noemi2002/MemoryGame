@@ -1,5 +1,4 @@
 #include "matriz.h"
-#include <tarjeta.h>
 #include <QFile>
 #include <QMessageBox>
 #include <QTextStream>
@@ -247,6 +246,7 @@ QString Matriz::buscarImagenCarta(QString nombre){
         g++;
     }
     if (respuesta == "false"){
+        pageFaults += 1;
         cambioDeImagenes(nombre, fila, columna);//paginacion("matriz.txt", nombre, numero-1);
         respuesta = paginacion("matriz.txt", nombre, numero-1);
     }
@@ -293,14 +293,25 @@ void Matriz::cambioDeImagenes(QString imagen, int indiceActualI, int indiceActua
 
 }
 
+/**
+ * Devuelte la cantidad de page faults acumulados.
+ * @brief Matriz::obtenerPageFaults
+ * @return
+ */
+int Matriz::obtenerPageFaults(){
+    return pageFaults;
+}
+
 
 /**
  * Este método llama a las principales funciones de esta clae.
  * @brief Matriz::inicio
  */
 void Matriz::inicio(){
+    pageFaults = 0;
     mezclarImagenes(NombreCartas);;
     MatrizDisco(NombreCartas, TablasHash);
+    ptrTarjeta = (Tarjeta*) malloc(sizeof(Tarjeta));
     crearMatrizMemoria(NombreCartas, TablasHash);
     EscribirMartriz("matriz.txt", TablasHash, NombreCartas);
     borrarTabla(NombreCartas, TablasHash);

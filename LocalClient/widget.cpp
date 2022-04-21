@@ -2,15 +2,17 @@
 #include "ui_widget.h"
 #include <QMessageBox>
 
+
+/**
+ * Conexión del cliente al servidor mediante TCPSockets
+ * @brief Widget::Widget
+ * @param parent
+ */
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-
-    /*
-     * Conexión del cliente al servidor mediante TCPSockets
-     */
     PtrSocketC = new QTcpSocket(this);
     PtrSocketC->connectToHost("localhost", 8080);
 
@@ -59,9 +61,10 @@ Widget::Widget(QWidget *parent)
 }
 
 
-/*
+/**
  * Este método recibe la carta seleccionada y la guarda en un puntero
  * Hace la llamada a al método que envia la carta la servidor
+ * @brief Widget::cartaSeleccionada
  */
 void Widget::cartaSeleccionada(){
 
@@ -81,8 +84,9 @@ void Widget::cartaSeleccionada(){
 }
 
 
-/*
+/**
  * Este método actualiza el cronometro casa segundo.
+ * @brief Widget::cronometro
  */
 void Widget::cronometro(){
         tiempo=tiempo.addSecs(1);
@@ -91,8 +95,12 @@ void Widget::cronometro(){
 
 
 /*
+ *
+ */
+/**
  * Recibe y lee la dirección de la imagen que manda el servidor.
  * Manda a llamar a la función que va a mostrar la imagen con la dirección recibida.
+ * @brief Widget::leer
  */
 void Widget::leer(){
     QByteArray buffer;
@@ -108,16 +116,19 @@ Widget::~Widget()
 }
 
 
-/*
+/**
  * Busca la imagen, según la dirección que recibió y le cambia el estilo al botón para mostrarla.
+ * @brief Widget::mostrarImagen
+ * @param imagen
  */
 void Widget::mostrarImagen(QString imagen){
     primerCarta->setStyleSheet("#" + primerCarta->objectName() + "{ background-image:" + imagen + "}");
 }
 
 
-/*
+/**
  * Hace la comprobación de tiempo o de la cantida de parejas restantes para dar por acabado el juego
+ * @brief Widget::finalizarJuego
  */
 void Widget::finalizarJuego(){
     if(parejasRestantes == 0){
@@ -132,9 +143,10 @@ void Widget::finalizarJuego(){
 }
 
 
-/*
+/**
  * Este método se está llamando constantemente para que el crónometro se muestre en pantalla en tiempo real
  * y llama al método de actualizarJuego para que se acabe el juego en el tiempo correcto.
+ * @brief Widget::actualizarJuego
  */
 void Widget::actualizarJuego(){
     cronometro();
@@ -142,9 +154,10 @@ void Widget::actualizarJuego(){
 }
 
 
-/*
+/**
  * En caso de que las catas no tengan la misma imagen, se cambia el estilo del botón-carta al que tenía al principio y se vuelven a habilitar
  * para que sea nuevamente escogidos.
+ * @brief Widget::reiniciarEstadoTarjetas
  */
 void Widget::reiniciarEstadoTarjetas(){ //reiniciar tarjetas
     primerCarta->setStyleSheet("#" + primerCarta->objectName() + "{ }");
@@ -157,9 +170,10 @@ void Widget::reiniciarEstadoTarjetas(){ //reiniciar tarjetas
 }
 
 
-/*
+/**
  * Este método identifica si hubo cambio de puntaje: si hubo deja las cartas con la imagen, resta a las perejas que quedan y llama a finalizarJuego
  * en caso de que no hubieran deja las imagenes por un rato pequeño para que el jugador las vea y luego manda a que sean volteadas.
+ * @brief Widget::avanceJuego
  */
 void Widget::avanceJuego(){
     if (!aumentoPuntaje){
@@ -174,12 +188,13 @@ void Widget::avanceJuego(){
 }
 
 
-/*
- * Este método recibe el dato enviado por el servidor con la dirección de la imagen y los puntos obtenidos, los separa
+/**
+ *  * Este método recibe el dato enviado por el servidor con la dirección de la imagen y los puntos obtenidos, los separa
  * en caso de que hubiera aumento de puntos lo muestra en la interfaz del juego, también verifica si hay dos cartas volteadas para que se llame al método
  * avanceJuego para voltear las cartas si es necesario.
- *
- * Retorna la dirección de la imgaen.
+ * @brief Widget::obtenerImagen
+ * @param mensaje
+ * @return imagen
  */
 QString Widget::obtenerImagen(QString mensaje){
     std::string datoOriginal = mensaje.toStdString();
@@ -203,8 +218,10 @@ QString Widget::obtenerImagen(QString mensaje){
 }
 
 
-/*
+/**
  * Este método envía el nombre de la carta la servidor a través del socket.
+ * @brief Widget::EnviarCarta
+ * @param nombre
  */
 void Widget::EnviarCarta(QString nombre){
     PtrSocketC->write(nombre.toLatin1().data(), nombre.size());
@@ -212,8 +229,9 @@ void Widget::EnviarCarta(QString nombre){
 }
 
 
-/*
+/**
  * Este es el método principal del cliente, donde se inicializan todas las variables importantes del juego
+ * @brief Widget::iniciarJuego
  */
 void Widget::iniciarJuego(){
     jugadaIniciada=false;
